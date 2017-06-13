@@ -149,4 +149,29 @@ heatmaply(relativeBmiMatrix,
           margins = c(50, 50, 50, 50))
 
 
+# try using a structural value, such as ego degrees
+
+egoDeg <- overview.df$egoDeg
+relativeDegMatrix <- matrix(ncol = 40, nrow = 40)
+
+# loop through each entry, going column by column
+for(j in 1:40){
+  # set the reference bmi
+  ref <- egoDeg[j]
+  
+  for(i in 1:40) {
+    # perform the calculation and update the matrix
+    relativeDegMatrix[i, j] <- (ref - egoDeg[i]) / mean(ref, egoDeg[i])
+  }
+}
+
+# plot the heatmap
+heatmaply(relativeDegMatrix,
+          dendrogram = "none",
+          main = "Relative Ego Degree",
+          xlab = "Egonets (Reference)",
+          ylab = "Egonets (Compared)",
+          cexRow = 6,
+          cexCol = 6,
+          margins = c(50, 50, 50, 50))
 
