@@ -134,7 +134,7 @@ for(j in 1:40){
   
   for(i in 1:40) {
     # perform the calculation and update the matrix
-    relativeBmiMatrix[i, j] <- (ref - bmi[i]) / mean(ref, bmi[i])
+    relativeBmiMatrix[i, j] <- (ref - bmi[i]) / mean(c(ref, bmi[i]))
   }
 }
 
@@ -161,7 +161,7 @@ for(j in 1:40){
   
   for(i in 1:40) {
     # perform the calculation and update the matrix
-    relativeDegMatrix[i, j] <- (ref - egoDeg[i]) / mean(ref, egoDeg[i])
+    relativeDegMatrix[i, j] <- (ref - egoDeg[i]) / mean(c(ref, egoDeg[i]))
   }
 }
 
@@ -169,6 +169,36 @@ for(j in 1:40){
 heatmaply(relativeDegMatrix,
           dendrogram = "none",
           main = "Relative Ego Degree",
+          xlab = "Egonets (Reference)",
+          ylab = "Egonets (Compared)",
+          cexRow = 6,
+          cexCol = 6,
+          margins = c(50, 50, 50, 50))
+
+# do the exact same thing but for relative difference in edge numbers
+
+edgeNum <- overview.df$edgeNum
+relativeEdgMatrix <- matrix(ncol = 40, nrow = 40)
+
+# loop through each entry, going column by column
+for(j in 1:40){
+  # set the reference bmi
+  ref <- edgeNum[j]
+  
+  for(i in 1:40) {
+    # perform the calculation and update the matrix
+    diffe <- (ref - edgeNum[i]) / mean(c(ref, edgeNum[i]))
+    if (is.infinite(diffe) || is.nan(diffe))
+      relativeEdgMatrix[i, j] <- 0
+    else
+      relativeEdgMatrix[i, j] <- diffe
+  }
+}
+
+# plot the heatmap
+heatmaply(relativeEdgMatrix,
+          dendrogram = "none",
+          main = "Relative Number of Edges",
           xlab = "Egonets (Reference)",
           ylab = "Egonets (Compared)",
           cexRow = 6,
