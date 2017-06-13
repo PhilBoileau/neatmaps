@@ -118,6 +118,35 @@ heatmaply(percentize(overview.df),
 # alter the infowindow to show the actual value, and not the normalized value
 
 
+# the next plot that I want to create is a plot of relative differences between
+# each of the egonets for a single property of the networks. This can ego centric, 
+# alter centric or structural. We will let relative difference be defined as 
+# (x - y) / mean(x, y) where x is the reference point
+
+# lets start off with bmi
+bmi <- overview.df$bmi
+relativeBmiMatrix <- matrix(data = NA, nrow = 40, ncol = 40)
+
+# loop through each entry, going column by column
+for(j in 1:40){
+  # set the reference bmi
+  ref <- bmi[j]
+  
+  for(i in 1:40) {
+    # perform the calculation and update the matrix
+    relativeBmiMatrix[i, j] <- (ref - bmi[i]) / mean(ref, bmi[i])
+  }
+}
+
+# plot the heatmap
+heatmaply(relativeBmiMatrix,
+          dendrogram = "none",
+          main = "Relative BMI",
+          xlab = "Egonets (Reference)",
+          ylab = "Egonets (Compared)",
+          cexRow = 6,
+          cexCol = 6,
+          margins = c(50, 50, 50, 50))
 
 
 
