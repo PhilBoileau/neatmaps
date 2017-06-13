@@ -95,15 +95,27 @@ par(mfrow=c(1, 1))
 
 
 
-# time to create the first heatmap. This will just give an overview of the various 
+# time to create the first heatmap.
+# This will just give an overview of the various characteristics of each egonet
+library(d3heatmap)
+d3heatmap(overview.df, scale = "column", dendrogram = "none", colors = "YlOrRd", main = "Networks Overview")
+# although i really like this package, it is not actively maintained
 
+library(heatmaply)
+heatmaply(percentize(overview.df),
+          dendrogram = "none",
+          main = "Overview of Egonets",
+          xlab = "Characteristics",
+          ylab = "Egonets",
+          margins = c(50, 50, 50, 100),
+          cexRow = 6,
+          cexCol = 6,
+          cellnote = overview.df,
+          cellnote_color = "#000000",
+          draw_cellnote = F)
 
-
-
-
-
-
-
+# this seems pretty solid... I'm going to email sahir to see if it would be possible to 
+# alter the infowindow to show the actual value, and not the normalized value
 
 
 
