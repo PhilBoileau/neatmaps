@@ -101,6 +101,9 @@ library(d3heatmap)
 d3heatmap(overview.df, scale = "column", dendrogram = "none", colors = "YlOrRd", main = "Networks Overview")
 # although i really like this package, it is not actively maintained
 
+# order the data based on BMI to get a clear plot
+# overview.df <- overview.df[order(overview.df$bmi), ]
+
 library(heatmaply)
 heatmaply(percentize(overview.df),
           dendrogram = "none",
@@ -108,6 +111,7 @@ heatmaply(percentize(overview.df),
           xlab = "Characteristics",
           ylab = "Egonets",
           margins = c(50, 50, 50, 100),
+          colors = heat.colors(100),
           cexRow = 6,
           cexCol = 6,
           cellnote = overview.df,
