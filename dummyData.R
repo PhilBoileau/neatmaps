@@ -15,27 +15,26 @@ library(igraph)
 # create a vector of 40 vertices that follow a normal distribution with mean 7 and std 3
 # essentially the degree of the ego
 vertNum <- ceiling(rnorm(40, mean = 7, sd = 3))
-# make sure none are zero
+# make sure none are zero or negative
 vertNum[which(vertNum <= 0)] <- 1
 
 # create a list of 40 ego-networks
 egoNets <- list()
-
 for(i in 1:40){
-  
+
   erdosI <- simplify(erdos.renyi.game(vertNum[i], 0.2, type = "gnp", directed = F))
   egoNets <- append(egoNets, list(erdosI))
-  
+
 }
 
 
 # for the fun of it, graph the first nine ego Networks
 par(mfrow = c(3, 3), mar = c(1, 1, 1, 1))
 for(j in 1:9){
-  
+
   plot(egoNets[[j]], edge.arrow.size = .2, vertex.color = "blue", vertex.label = NA,
        edge.arrow.mode = 0, layout = layout_in_circle(egoNets[[j]]), main = j)
-  
+
 }
 
 # clean up
@@ -48,51 +47,70 @@ rm(i, j, erdosI)
 # generate the values for the BMI
 bmi <- rnorm(40, mean = 25, 5)
 bmiAve <- rnorm(40, mean = 25, 2)
-overview.df <- as.data.frame(bmi)
-overview.df$bmiAve <- bmiAve
+for(i in 1:length(egoNets)){
+
+  egoNets[[i]]$bmi <- bmi[i]
+  egoNets[[i]]$bmiAve <- bmiAve[i]
+
+}
 rm(bmi, bmiAve)
 
 # add ego degree
-overview.df$egoDeg <- vertNum
+for(i in 1:length(egoNets)){
+
+  egoNets[[i]]$egoDegree <- vertNum[i]
+
+  }
 
 # add gender (0 is girls, 1 is boys)
-overview.df$gender <- round(runif(40))
+for(i in 1:length(egoNets)){
 
-# calculate the values of (insert here) for each network
-overview.df$homo <- runif(40)
-overview.df$krackhardt <- runif(40, min = -1, max = 1)
-overview.df$yulesq <- runif(40, min = -1, max = 1)
-overview.df$IQV <- runif(40)
-overview.df$constrain <- runif(40)
-overview.df$hierarchy <- runif(40)
-
-# further calculations of the networks structural properties
-edgeDensity <- c()
-components <- c()
-edgeCount <- c()
-effectiveSize <- c()
-efficiency <- c()
-
-for(i in 1:40){
-  
-  edgeDensity <- c(edgeDensity, edge_density(egoNets[[i]], loops = FALSE))
-  components <- c(components, count_components(egoNets[[i]]))
-  edgeCount <- c(edgeCount, gsize(egoNets[[i]]))
-  effectiveSize <- c(effectiveSize, vcount(egoNets[[i]]) - sum(degree(egoNets[[i]], mode = "all"))/vertNum[i])
-  efficiency <- c(efficiency, effectiveSize[i] / vertNum[i])
+  egoNets[[i]]$gender <- as.numeric(runif(1) > 0.5)
 
 }
 
-# add values to the df
-overview.df$density <- edgeDensity
-overview.df$components <- components
-overview.df$edgeNum <- edgeCount
-overview.df$effectiveSize <- effectiveSize
-overview.df$efficiency <- efficiency
+# calculate the values of (insert here) for each network
+for(i in 1: length(egoNets)){
 
-rm(i, edgeDensity, vertNum, components, edgeCount, effectiveSize, efficiency)
+  egoNets[[i]]$homo <- runif(1)
+  egoNets[[i]]$krackhardt <- runif(1, min = -1, max = 1)
+  egoNets[[i]]$yulesq <- runif(1, min = -1, max = 1)
+  egoNets[[i]]$IQV <- runif(1)
+  egoNets[[i]]$constrain <- runif(1)
+  egoNets[[i]]$hierarchy <- runif(1)
+
+}
+
+# further calculations of the networks structural properties
+for(i in 1:length(egoNets)){
+
+  egoNets[[i]]$edgeDensity <- edge_density(egoNets[[i]], loops = FALSE)
+  egoNets[[i]]$components <- count_components(egoNets[[i]])
+  egoNets[[i]]$edgeCount <- gsize(egoNets[[i]])
+  egoNets[[i]]$effectiveSize <- egoNets[[i]]$egoDegree -
+                                  sum(degree(egoNets[[i]]))/egoNets[[i]]$egoDegree
+  egoNets[[i]]$efficiency <- egoNets[[i]]$effectiveSize / egoNets[[i]]$egoDegree
+
+}
+
+rm(i, vertNum)
+# reset the number of plots per frame
 par(mfrow=c(1, 1))
 
+# create a dataframe based on the graph attribute of each egonet
+attrList <- as.data.frame(t(sapply(1:length(egoNets), function(x) graph_attr(egoNets[[x]]))))
+
+# drop some of the attributes that we are not interested in:
+attrList <- attrList[-seq(1:4)]
+
+# unlist all of the columns of the matrix, name the columns
+overview.df <- as.data.frame(sapply(1:length(attrList), function(x) unlist(attrList[, x])))
+colnames(overview.df) <- colnames(attrList)
+rm(attrList)
+
+
+# order the data based on BMI to get a clear plot
+# overview.df <- overview.df[order(overview.df$bmi), ]
 
 
 # time to create the first heatmap.
@@ -101,8 +119,6 @@ library(d3heatmap)
 d3heatmap(overview.df, scale = "column", dendrogram = "none", colors = "YlOrRd", main = "Networks Overview")
 # although i really like this package, it is not actively maintained
 
-# order the data based on BMI to get a clear plot
-# overview.df <- overview.df[order(overview.df$bmi), ]
 
 library(heatmaply)
 heatmaply(percentize(overview.df),
@@ -118,13 +134,13 @@ heatmaply(percentize(overview.df),
           cellnote_color = "#000000",
           draw_cellnote = F)
 
-# this seems pretty solid... I'm going to email sahir to see if it would be possible to 
+# this seems pretty solid... I'm going to email sahir to see if it would be possible to
 # alter the infowindow to show the actual value, and not the normalized value
 
 
 # the next plot that I want to create is a plot of relative differences between
-# each of the egonets for a single property of the networks. This can ego centric, 
-# alter centric or structural. We will let relative difference be defined as 
+# each of the egonets for a single property of the networks. This can ego centric,
+# alter centric or structural. We will let relative difference be defined as
 # (x - y) / mean(x, y) where x is the reference point
 
 # lets start off with bmi
@@ -135,7 +151,7 @@ relativeBmiMatrix <- matrix(data = NA, nrow = 40, ncol = 40)
 for(j in 1:40){
   # set the reference bmi
   ref <- bmi[j]
-  
+
   for(i in 1:40) {
     # perform the calculation and update the matrix
     relativeBmiMatrix[i, j] <- (ref - bmi[i]) / mean(c(ref, bmi[i]))
@@ -162,7 +178,7 @@ relativeDegMatrix <- matrix(ncol = 40, nrow = 40)
 for(j in 1:40){
   # set the reference bmi
   ref <- egoDeg[j]
-  
+
   for(i in 1:40) {
     # perform the calculation and update the matrix
     relativeDegMatrix[i, j] <- (ref - egoDeg[i]) / mean(c(ref, egoDeg[i]))
@@ -181,14 +197,14 @@ heatmaply(relativeDegMatrix,
 
 # do the exact same thing but for relative difference in edge numbers
 
-edgeNum <- overview.df$edgeNum
+edgeNum <- overview.df$edgeCount
 relativeEdgMatrix <- matrix(ncol = 40, nrow = 40)
 
 # loop through each entry, going column by column
 for(j in 1:40){
   # set the reference bmi
   ref <- edgeNum[j]
-  
+
   for(i in 1:40) {
     # perform the calculation and update the matrix
     diffe <- (ref - edgeNum[i]) / mean(c(ref, edgeNum[i]))
