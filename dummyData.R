@@ -42,8 +42,7 @@ rm(i, j, erdosI)
 #dev.off()
 
 
-# create a dataframe to store info on all the simulated values
-# add bmi
+# add all the graph attributes to the list of egonets
 # generate the values for the BMI
 bmi <- rnorm(40, mean = 25, 5)
 bmiAve <- rnorm(40, mean = 25, 2)
@@ -60,7 +59,7 @@ for(i in 1:length(egoNets)){
 
   egoNets[[i]]$egoDegree <- vertNum[i]
 
-  }
+}
 
 # add gender (0 is girls, 1 is boys)
 for(i in 1:length(egoNets)){
