@@ -7,10 +7,10 @@
 #' This function generates a list of ego networks and related attributes.
 #' These networks and attributes are generated randomly, and therefore hold no
 #' real value. This function should only be used to produce data when none other
-#' is available. The networks are created using the random graph model. the number of
+#' is available. The networks are created using the random graph model. The number of
 #' vertices per egonet is normally distributed with mean m and standard deviation s.
-#' Fifteen graph attributes are randomly generated, and a handful of structural
-#' characterisitcs are calculated.
+#' Fifteen graph attributes are randomly generated, as well as a handful of structural 
+#' characterisitcs. 12 of the graph attributes are independent and 3 are correlated.
 #'
 #' @param n number of egonets to simulate (set to 50 if not mentionned)
 #' @param m mean number of alters per egonet (set to 10 if not mentionned)
@@ -43,20 +43,39 @@ simulateEgonets <- function(n = 50, m = 10, s = 3, p = 0.2){
   egoNets <- lapply(1:n, function(x) simplify(erdos.renyi.game(egoDegree[x], p, type = "gnp", directed = F)))
   
   
-  # generate the 15 graph attributes.
-  attrNames <- sapply(1:15, function(x) paste("attr", as.character(x), sep = ""))
+  # generate 12 graph attributes that are independent
+  attrUnCorrNames <- sapply(1:12, function(x) paste("attrUnCorr", as.character(x), sep = ""))
   
-  # the first five is uniformely distributed between different values
-  for(i in 1:5)
-    egoNets <- lapply(1:n, function(x) set.graph.attribute(egoNets[[x]], attrNames[i], runif(1)))
+  # the first five are uniformely distributed between different values
+  for(i in 1:4)
+    egoNets <- lapply(1:n, function(x) set.graph.attribute(egoNets[[x]], attrUnCorrNames[i], runif(1)))
 
   # the second group of five is normally distrbuted with varying values of mean and sd
-  for(i in 6:10)
-    egoNets <- lapply(1:n, function(x) set.graph.attribute(egoNets[[x]], attrNames[i], rnorm(1, 0 , 1)))
+  for(i in 5:8)
+    egoNets <- lapply(1:n, function(x) set.graph.attribute(egoNets[[x]], attrUnCorrNames[i], rnorm(1, 0 , 1)))
   
   # the third group of five follow an exponential distribution with varying rates
-  for(i in 11:15)
-    egoNets <- lapply(1:n, function(x) set.graph.attribute(egoNets[[x]], attrNames[i], rexp(1, 1)))
+  for(i in 9:12)
+    egoNets <- lapply(1:n, function(x) set.graph.attribute(egoNets[[x]], attrUnCorrNames[i], rexp(1, 1)))
+  
+  
+  # create the vector of correlated uniform rv
+  pvars <- pnorm(as.vector(mvrnorm(n = 100, rep(0, 4),
+                     Sigma = matrix(0.7, nrow = 4, ncol = 4) + diag(4)*0.3)))
+  
+  # generate one the variables, using a normal distribution, and a poisson and an exponential
+  egoNets <- lapply(1:n, function(x)
+                          set.graph.attribute(egoNets[[x]],
+                                              "attrCorrNames1",
+                                              qnorm(pvars[round(runif(1,min = 0, max = length(pvars)))])))
+  egoNets <- lapply(1:n, function(x)
+                          set.graph.attribute(egoNets[[x]],
+                                              "attrCorrNames1",
+                                              qpois(pvars[round(runif(1,min = 0, max = length(pvars)))], 4)))
+  egoNets <- lapply(1:n, function(x)
+                          set.graph.attribute(egoNets[[x]],
+                                              "attrCorrNames1",
+                                              qexp(pvars[round(runif(1,min = 0, max = length(pvars)))])))
   
   
   # calculate some structural properties for each egonet
