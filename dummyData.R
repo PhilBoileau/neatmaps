@@ -121,7 +121,7 @@ d3heatmap(overview.df, scale = "column", dendrogram = "none", colors = "YlOrRd",
 
 library(heatmaply)
 heatmaply(percentize(overview.df),
-          dendrogram = "row",
+          dendrogram = "none",
           main = "Overview of Egonets",
           xlab = "Characteristics",
           ylab = "Egonets",
