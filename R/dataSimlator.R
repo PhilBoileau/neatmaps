@@ -12,20 +12,23 @@
 #' Fifteen graph attributes are randomly generated, as well as a handful of structural 
 #' characterisitcs. 12 of the graph attributes are independent and 3 are correlated.
 #'
-#' @param n number of egonets to simulate (set to 50 if not mentionned)
-#' @param m mean number of alters per egonet (set to 10 if not mentionned)
-#' @param s standard deviations of alters per egonet (set to 3 if not mentionned)
-#' @param p probability of an edge between vertices for GNP model (set to 0.2 if not mentionned)
+#' @param n number of egonets to simulate
+#' @param m mean number of alters per egonet
+#' @param s standard deviations of alters per egonet
+#' @param p probability of an edge between vertices for GNP model
 #' @method simulate egonet data
 #' @export
 #' @return array of n \url{http://igraph.org/} objects
 #' @author Phil Boileau <philippe.boileau@mail.concordia.ca>
 #' @example
 #' egoNetList <- simulateEgonets(n = 50, m = 7, s = 2)
-simulateEgonets <- function(n = 50, m = 10, s = 3, p = 0.2){
+simulateEgonets <- function(n = 50, m = 7, s = 2, p = 0.2){
   
   # avoid arguments that would cause errors
-  if(n < 1 || n%%1 != 0 || is.numeric(n) == FALSE)
+  if(is.numeric(n)){
+    if(n < 1 || n%%1 != 0)
+      stop("n must be an integer greater than or equal to 1")
+  } else
     stop("n must be an integer greater than or equal to 1")
   if(m < 1 || is.numeric(m) == FALSE)
     stop("m must be a number greater than 1")
