@@ -46,27 +46,9 @@ egoListToDataframe <- function(data, centralMeasures, homoVars, homoMeasures){
   packedDf <- as.data.frame(t(sapply(1:length(data), function(x) graph_attr(data[[x]]))))
   attrNames <- colnames(packedDf)
   attrDf <- as.data.frame(sapply(1:length(packedDf), function(x) unlist(packedDf[, x])))
+  attrDf <- unfactor(attrDf) # using the varhandle package
   colnames(attrDf) <- attrNames
   
   return(attrDf)
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

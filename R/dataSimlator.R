@@ -98,9 +98,3 @@ simulateEgonets <- function(n = 50, m = 7, s = 2, p = 0.2){
   return(egoNets)
   
 }
-
-
-
-
-
-
