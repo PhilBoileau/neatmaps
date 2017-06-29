@@ -39,10 +39,12 @@
 #'   "percentize" is selected, column values are transformed into percentiles. This
 #'   conserves the underlying distribution of the data if the data is not expected to
 #'   be normally distributed. Defaults to "none".
-#'   
+#' @export
+#' @author Phil Boileau <philippe.boileau@mail.concordia.ca>  
 #' @return The function returns a data frame that offers an overview of all of the
 #'   ego networks.
-#'   
+#' 
+#' 
 #' @examples
 #' 
 egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df, measuresOfCent = c("mean"),

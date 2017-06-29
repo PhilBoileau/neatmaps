@@ -21,7 +21,6 @@
 #'   distribution.
 #' @param printCluster a boolean value to determine if the cluster analysis
 #'   should be printed to the console.
-#' @method create a heatmap of ego networks and it's cluster analysis
 #' @export
 #' @return an interactive heatmap, as well as a hierarchal clustering 
 #'   analysis on the ego networks and on their attributes
