@@ -47,13 +47,13 @@
 #' 
 #' @examples
 #' 
-egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df, measuresOfCent = c("mean"),
-                              homoVars = NULL, homoMeasures = NULL, scale.df = "none"){
+egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df,
+                              measuresOfCent = c("mean"), scale.df = "none"){
 
   # Make sure that only data frames are being passed in to the three first arguments
   if(class(net.attr.df) != "data.frame" || class(alter.attr.df) != "data.frame" ||
-     class(edge.df) != "data.frame" || length(net.attr.df) != length(alter.attr.df) ||
-     length(net.attr.df) != length(edge.df))
+     class(edge.df) != "data.frame" || nrow(net.attr.df) != nrow(alter.attr.df) ||
+     nrow(net.attr.df) != nrow(edge.df))
     stop("Please make sure tha net.attr.df, alter.attr.df and edge.df 
          are dataframes of the same length.")
   
@@ -64,21 +64,21 @@ egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df, measuresOfCen
   
   # create the igraph network list of all the egonets, only including variables used
   # to measure homophily
-  # egonetList <- createNetworks(alter.attr.df, edge.df, homoMeasures)
+  egonetList <- createNetworks(edge.df)
   
   # get the structural characteristics of each of egonetworks
-  # structure.df <- getStructureAttr(egonetList, homoMeasures)
+  structure.df <- getStructureAttr(egonetList)
   
   
   # drop the homophily measure variables from the alter.attr.df
-  alter.attr.df <- alter.attr.df[, !(names(alter.attr.df) %in% homoVars)]
+  # alter.attr.df <- alter.attr.df[, !(names(alter.attr.df) %in% homoVars)]
   
   # get the measures of centrality of the alter characteristics
-  # alter.measures.df <- compactAlterAttr(alter.attr.df, measuresOfCent)
+  alter.measures.df <- compactAlterAttr(alter.attr.df, measuresOfCent)
   
   
   # combine all three data frames to get the final df
-  # df <- cbind(df, structure.df, alter.measures.df)
+  df <- cbind(df, structure.df, alter.measures.df)
   
   
   # scale the data frame, if requested

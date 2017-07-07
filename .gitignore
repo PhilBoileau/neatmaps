@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 hegomaps.Rproj
+R/compactAlterTest.R
+R/egoNetDataFrameTest.R
