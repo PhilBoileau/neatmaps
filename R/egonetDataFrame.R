@@ -32,13 +32,6 @@
 #'   they are catigorical variables.
 #' @param homoMeasures A vector consisting of the various methods to calculate homophily
 #'   with. The supported measures are: "homophily", "EIindex" and "IQV".
-#' @param scale A string indicating whether the data frame should be scaled, and if so,
-#'   which method should be used. The options are "none", "normalize" and "percentize".
-#'   If "none" is selected, then no scaling takes place. If "normalize" is selected,
-#'   each column is normalized to have a mean of 0 and standard deviation of 1. If 
-#'   "percentize" is selected, column values are transformed into percentiles. This
-#'   conserves the underlying distribution of the data if the data is not expected to
-#'   be normally distributed. Defaults to "none".
 #' @export
 #' @author Phil Boileau <philippe.boileau@mail.concordia.ca>  
 #' @return The function returns a data frame that offers an overview of all of the
@@ -79,13 +72,6 @@ egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df,
   
   # combine all three data frames to get the final df
   df <- cbind(df, structure.df, alter.measures.df)
-  
-  
-  # scale the data frame, if requested
-  if(scale.df == "normalize")
-    df <- scale(df)
-  else if(scale.df == "percentize")
-    df <- percentize(df)
   
   
   # return the final product

@@ -29,8 +29,8 @@ for(i in 1:40){
 
 
 # for the fun of it, graph the first nine ego Networks
-par(mfrow = c(3, 3), mar = c(1, 1, 1, 1))
-for(j in 1:9){
+par(mfrow = c(6, 6), mar = c(1, 1, 1, 1))
+for(j in 1:36){
 
   plot(egoNets[[j]], edge.arrow.size = .2, vertex.color = "blue", vertex.label = NA,
        edge.arrow.mode = 0, layout = layout_in_circle(egoNets[[j]]), main = j)

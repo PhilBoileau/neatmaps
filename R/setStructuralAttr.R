@@ -39,6 +39,9 @@ getStructureAttr <- function(egonetList){
   # calculate the hierarchy of the graphs
   df$hierarchy <- sapply(1:egoListLen, function(x) hierarchy(egonetList[[x]]))
   
+  # remove the ego ID
+  df$egoID <- NULL
+  
   return(df)
   
 }

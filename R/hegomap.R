@@ -12,22 +12,23 @@
 #' 
 #' @param df a dataframe of ego network attributes containing only
 #'   numeric values
-#' @param scale choice of scalling method to use on the data. The choices
-#'   are: "none", "normalize" and "reduce". "none" does not
-#'   apply scaling to the dataframe. "normalize" assumes that all variables
-#'   are normally distributed and transforms the data into the standard
-#'   normal distribution. "reduce" transforms all data to be between the
-#'   value of 0 and 1, all while maintaining the shape of their original
-#'   distribution.
 #' @param printCluster a boolean value to determine if the cluster analysis
 #'   should be printed to the console.
+#' @param scale A string indicating whether the data frame should be scaled, and if so,
+#'   which method should be used. The options are "none", "basic", "normalize" and "percentize".
+#'   If "none" is selected, then no scaling takes place.  If "basic" is selected, each
+#'   column is reduced to the 0-1 interval, whithout changing the underlying distribution. 
+#'   If "normalize" is selected, each column is normalized to have a mean of 0 and 
+#'   standard deviation of 1. If "percentize" is selected, column values are transformed 
+#'   into percentiles. This conserves the underlying distribution of the data if the data
+#'   is not expected to be normally distributed. Defaults to "none".   
 #' @export
 #' @return an interactive heatmap, as well as a hierarchal clustering 
 #'   analysis on the ego networks and on their attributes
 #' @author Phil Boileau <philippe.boileau@mail.concordia.ca>
 #' @example
 #' 
-hegomaps <- function(df, scale = "reduce", printCluster = TRUE){
+hegomaps <- function(df, printCluster = FALSE){
   
   # check dataframe to make sure that it only contains numeric values
   if(FALSE %in% sapply(df, is.numeric))
