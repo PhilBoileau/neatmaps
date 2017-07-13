@@ -28,8 +28,8 @@
 #' @author Phil Boileau <philippe.boileau@mail.concordia.ca>
 #' @example
 #' 
-hegomaps <- function(df, scale.df, method.hclust = "average", method.dist = "euclidean",
-                     nBootRep = 1000, cexLables = 1, cexAU = 1, pAlpha = 0.95,
+hegomaps <- function(df, scale.df, link.method = "average", dist.method = "euclidean",
+                     nBootRep = 1000, cexLabels = 1, cexAU = 1, pAlpha = 0.95,
                      mainTitle, xlabel, ylabel, xlabFontSize = 5, ylabFontSize = 5,
                      heatmapMargins = c(50, 50, 50, 100), printCluster = FALSE){
   
@@ -44,7 +44,6 @@ hegomaps <- function(df, scale.df, method.hclust = "average", method.dist = "euc
     df <- scale(df)
   else if(scale.df == "percentize")
     df <- percentize(df)
-  
   
   # perform the cluster analysis on the variables of the networks
   results <- pvclust(df, method.hclust = link.method, method.dist = dist.method,
@@ -65,7 +64,7 @@ hegomaps <- function(df, scale.df, method.hclust = "average", method.dist = "euc
             xlab = xlabel,
             ylab = ylabel,
             margins = heatmapMargins,
-            scale_fill_gradient_fun = ggplot2::scale_fill_gradient2(low = "blue", high = "red"),
+            scale_fill_gradient_fun = ggplot2::scale_fill_gradient2(low = "blue", high = "red", midpoint = 0.5),
             cexRow = ylabFontSize,
             cexCol = xlabFontSize)
   
