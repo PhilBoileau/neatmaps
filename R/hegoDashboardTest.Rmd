@@ -10,6 +10,10 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(knitr)
+read_chunk("test.R")
+```
+```{r prepareData}
 ```
 
 Single Linkage Method
@@ -18,25 +22,42 @@ Single Linkage Method
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Heatmap
 
-```{r}
-
+```{r include=FALSE}
+set.seed(96)
+results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
+                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   cexLabels = 0.5, cexAU = 0.5, printCluster = T,
+                   link.method = "single")
+```
+```{r echo=FALSE}
+results[[3]] %>% layout(margin = list(b = 150), width=850, height=700)
 ```
 
-Column {data-width=350}
+
+Column {data-width=350, .tabset}
 -----------------------------------------------------------------------
 
-### Chart B
+### Dendrogram
 
 ```{r}
-
+pDend <- results[[1]]
+res <- results[[2]]
+labels_cex(pDend) <- 0.5
+  
+pDend %>% pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
+  plot(main = 
+         paste("Cluster Dendrogram with AU/BP values (%)\n AU Values Highlighted by Signif -\n",
+               "Single Linkage Method"))
+res %>% text(cex = 0.60)
+res %>% pvrect(alpha = 0.95)
 ```
 
-### Chart C
+### Clusters
 
 ```{r}
-
+pvpick(res)$clusters
 ```
 
 
@@ -46,25 +67,41 @@ Average Linkage Method
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Heatmap
 
-```{r}
-
+```{r include=FALSE}
+set.seed(96)
+results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
+                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   cexLabels = 0.5, cexAU = 0.5, printCluster = T,
+                   link.method = "average")
+```
+```{r echo=FALSE}
+results[[3]] %>% layout(margin = list(b = 150), width=850, height=700)
 ```
 
-Column {data-width=350}
+Column {data-width=350, .tabset}
 -----------------------------------------------------------------------
 
-### Chart B
+### Dendrogram
 
 ```{r}
-
+pDend <- results[[1]]
+res <- results[[2]]
+labels_cex(pDend) <- 0.5
+  
+pDend %>% pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
+  plot(main = 
+         paste("Cluster Dendrogram with AU/BP values (%)\n AU Values Highlighted by Signif -\n",
+               "Average Linkage Method"))
+res %>% text(cex = 0.60)
+res %>% pvrect(alpha = 0.95)
 ```
 
-### Chart C
+### Clusters
 
 ```{r}
-
+pvpick(res)$clusters
 ```
 
 Complete Linkage Method
@@ -73,25 +110,41 @@ Complete Linkage Method
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Heatmap
 
-```{r}
-
+```{r include=FALSE}
+set.seed(96)
+results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
+                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   cexLabels = 0.5, cexAU = 0.5, printCluster = T,
+                   link.method = "complete")
+```
+```{r echo=FALSE}
+results[[3]] %>% layout(margin = list(b = 150), width=850, height=700)
 ```
 
-Column {data-width=350}
+Column {data-width=350, .tabset}
 -----------------------------------------------------------------------
 
-### Chart B
+### Dendrogram
 
 ```{r}
-
+pDend <- results[[1]]
+res <- results[[2]]
+labels_cex(pDend) <- 0.5
+  
+pDend %>% pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
+  plot(main = 
+         paste("Cluster Dendrogram with AU/BP values (%)\n AU Values Highlighted by Signif -\n",
+               "Complete Linkage Method"))
+res %>% text(cex = 0.60)
+res %>% pvrect(alpha = 0.95)
 ```
 
-### Chart C
+### Clusters
 
 ```{r}
-
+pvpick(res)$clusters
 ```
 
 Network Clustering
