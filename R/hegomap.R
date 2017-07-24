@@ -23,8 +23,8 @@
 #'   into percentiles. This conserves the underlying distribution of the data if the data
 #'   is not expected to be normally distributed. Defaults to "none".   
 #' @export
-#' @return an interactive heatmap, as well as a hierarchal clustering 
-#'   analysis on the ego networks and on their attributes
+#' @return a list containing the dendrogram with the statistical analysis of the clusters,
+#'   the results of the said statistical analysis and the heatmap
 #' @author Phil Boileau <philippe.boileau@mail.concordia.ca>
 #' @example
 #' 
@@ -49,18 +49,10 @@ hegomaps <- function(df, scale.df, link.method = "average", dist.method = "eucli
   results <- pvclust(df, method.hclust = link.method, method.dist = dist.method,
                      nboot = nBootRep)
   dend <- as.dendrogram(results)
-  if(printCluster == TRUE){
-    labels_cex(dend) <- cexLabels
-    dend %>% pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
-      plot(main = 
-             paste("Cluster Dendrogram with AU/BP values (%)\n AU Values Highlighted by Signif -\n",
-                   dist.method, "/", link.method))
-    results %>% text(cex = cexAU)
-    results %>% pvrect(alpha = pAlpha)
-  }
+
   
   # create the heatmap
-  heatmaply(df, Colv = dend, main = mainTitle,
+  hm <- heatmaply(df, Colv = dend, main = mainTitle,
             xlab = xlabel,
             ylab = ylabel,
             margins = heatmapMargins,
@@ -68,4 +60,5 @@ hegomaps <- function(df, scale.df, link.method = "average", dist.method = "eucli
             cexRow = ylabFontSize,
             cexCol = xlabFontSize)
   
+  return(list(dend, results, hm))
 }
