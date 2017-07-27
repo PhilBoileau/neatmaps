@@ -36,10 +36,7 @@
 #' @author Phil Boileau <philippe.boileau@mail.concordia.ca>  
 #' @return The function returns a data frame that offers an overview of all of the
 #'   ego networks.
-#' 
-#' 
-#' @examples
-#' 
+
 egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df,
                               measuresOfCent = c("mean"), scale.df = "none"){
 
@@ -61,10 +58,6 @@ egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df,
   
   # get the structural characteristics of each of egonetworks
   structure.df <- getStructureAttr(egonetList)
-  
-  
-  # drop the homophily measure variables from the alter.attr.df
-  # alter.attr.df <- alter.attr.df[, !(names(alter.attr.df) %in% homoVars)]
   
   # get the measures of centrality of the alter characteristics
   alter.measures.df <- compactAlterAttr(alter.attr.df, measuresOfCent)

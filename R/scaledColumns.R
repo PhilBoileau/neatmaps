@@ -5,7 +5,10 @@
 #'   between the values of 0 and 1 without changing the underlying
 #'   distribution of the columns.
 #'  
-#' @param df The data frame of numerical values to be scaled
+#' @param df The data frame of numerical values to be scaled.
+#' 
+#' @example 
+#' scaleColumns(mtcars)
 scaleColumns <- function(df){
   
   scaledDf <- as.data.frame(

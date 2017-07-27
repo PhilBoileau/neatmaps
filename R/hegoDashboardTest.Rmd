@@ -11,7 +11,8 @@ output:
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(knitr)
-read_chunk("test.R")
+read_chunk("test2.R")
+
 ```
 ```{r prepareData}
 ```
@@ -28,11 +29,10 @@ Column {data-width=650}
 set.seed(96)
 results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
                    xlabel = "Chararacteritics", ylabel = "Networks",
-                   cexLabels = 0.5, cexAU = 0.5, printCluster = T,
                    link.method = "single")
 ```
 ```{r echo=FALSE}
-results[[3]] %>% layout(margin = list(b = 150), width=850, height=700)
+results[[4]] %>% layout(margin = list(b = 150), width=850, height=700)
 ```
 
 
@@ -43,7 +43,7 @@ Column {data-width=350, .tabset}
 
 ```{r}
 pDend <- results[[1]]
-res <- results[[2]]
+res <- results[[3]]
 labels_cex(pDend) <- 0.5
   
 pDend %>% pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
@@ -57,7 +57,7 @@ res %>% pvrect(alpha = 0.95)
 ### Clusters
 
 ```{r}
-pvpick(res)$clusters
+formatCluster(results[[2]])
 ```
 
 
@@ -73,11 +73,10 @@ Column {data-width=650}
 set.seed(96)
 results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
                    xlabel = "Chararacteritics", ylabel = "Networks",
-                   cexLabels = 0.5, cexAU = 0.5, printCluster = T,
                    link.method = "average")
 ```
 ```{r echo=FALSE}
-results[[3]] %>% layout(margin = list(b = 150), width=850, height=700)
+results[[4]] %>% layout(margin = list(b = 150), width=850, height=700)
 ```
 
 Column {data-width=350, .tabset}
@@ -87,7 +86,7 @@ Column {data-width=350, .tabset}
 
 ```{r}
 pDend <- results[[1]]
-res <- results[[2]]
+res <- results[[3]]
 labels_cex(pDend) <- 0.5
   
 pDend %>% pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
@@ -101,7 +100,7 @@ res %>% pvrect(alpha = 0.95)
 ### Clusters
 
 ```{r}
-pvpick(res)$clusters
+formatCluster(results[[2]])
 ```
 
 Complete Linkage Method
@@ -116,11 +115,10 @@ Column {data-width=650}
 set.seed(96)
 results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
                    xlabel = "Chararacteritics", ylabel = "Networks",
-                   cexLabels = 0.5, cexAU = 0.5, printCluster = T,
                    link.method = "complete")
 ```
 ```{r echo=FALSE}
-results[[3]] %>% layout(margin = list(b = 150), width=850, height=700)
+results[[4]] %>% layout(margin = list(b = 150), width=850, height=700)
 ```
 
 Column {data-width=350, .tabset}
@@ -130,7 +128,7 @@ Column {data-width=350, .tabset}
 
 ```{r}
 pDend <- results[[1]]
-res <- results[[2]]
+res <- results[[3]]
 labels_cex(pDend) <- 0.5
   
 pDend %>% pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
@@ -144,31 +142,6 @@ res %>% pvrect(alpha = 0.95)
 ### Clusters
 
 ```{r}
-pvpick(res)$clusters
-```
-
-Network Clustering
-=======================================================================
-
-Column {.tabset}
------------------------------------------------------------------------
-
-### Single Linkage
-
-
-```{r}
-
-```
-
-### Average Linkage
-
-```{r}
-
-```
-
-### Complete Linkage
-
-```{r}
-
+formatCluster(results[[2]])
 ```
 
