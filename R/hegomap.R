@@ -24,7 +24,7 @@
 #' @param dist.method The distance measure to be used. See method in \link{dist}.
 #' @param nBootRep The number of bootstrap replications for the statistical analysis of 
 #'   the hierarchical clustering. See \link{pvclust}.
-#' @param mainTile The title of the heatmap.
+#' @param mainTitle The title of the heatmap.
 #' @param xlabel The x axis label of the heatmap.
 #' @param ylabel The y axis label of the heatmap.
 #' @param xlabCex The font size of the elements on the x axis.
@@ -32,11 +32,15 @@
 #' @param heatmapMargins The size of the margins for the heatmap. See \link{heatmaply}.
 #'
 #' @export
+#' @importFrom stats as.dendrogram
+#' @importFrom heatmaply percentize heatmaply
+#' @importFrom pvclust pvclust pvpick
+#' @importFrom ggplot2 scale_fill_gradient2
 #' 
 #' @return a list containing the dendrogram of the hierarchical clustering,
 #'   the results of the statistical analysis, the significant clusters of
 #'   the statistical analysis and the heatmap.
-#' @example 
+#' @examples 
 #' \donttest{
 #' hegomaps(df, scale.df = "basic", mainTitle = "Heatmap", 
 #'            xlabel = "Chararacteritics", ylabel = "Networks",
@@ -56,20 +60,20 @@ hegomaps <- function(df, scale.df, link.method = "average", dist.method = "eucli
   else if(scale.df == "normalize")
     df <- scale(df)
   else if(scale.df == "percentize")
-    df <- percentize(df)
+    df <- heatmaply::percentize(df)
   
   # perform the cluster analysis on the variables of the networks
-  results <- pvclust(df, method.hclust = link.method, method.dist = dist.method,
+  results <- pvclust::pvclust(df, method.hclust = link.method, method.dist = dist.method,
                      nboot = nBootRep)
   
   # create the dendrogram
-  dend <- as.dendrogram(results)
+  dend <- stats::as.dendrogram(results)
   
   # get the significant clusters
-  dendClusters <- pvpick(results)$clusters
+  dendClusters <- pvclust::pvpick(results)$clusters
   
   # create the heatmap
-  hm <- heatmaply(df, Colv = dend, main = mainTitle,
+  hm <- heatmaply::heatmaply(df, Colv = dend, main = mainTitle,
                    seriate = "OLO",
                    xlab = xlabel,
                    ylab = ylabel,

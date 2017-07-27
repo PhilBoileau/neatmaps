@@ -11,6 +11,8 @@
 #' @param measureOfCent A vector that contains the measures of centrality with
 #'   which to summarize the alter attributes. The supported measures are "mean"
 #'   and "median". Defaults to "mean".
+#'   
+#' @importFrom stats median
 compactAlterAttr <- function(alter.df, measureOfCent = "mean"){
   
   # make sure that the arguments entered are of the right format
@@ -39,7 +41,7 @@ compactAlterAttr <- function(alter.df, measureOfCent = "mean"){
       # for each measure of centrality, add the data to the df
       if("mean" %in% measureOfCent && "median" %in% measureOfCent){
         df[i, j] <- mean(alterData, na.rm = TRUE)
-        df[i, j + length(varNames)] <- median(alterData, na.rm = TRUE)
+        df[i, j + length(varNames)] <- stats::median(alterData, na.rm = TRUE)
       } else if ("mean" %in% measureOfCent)
         df[i, j] <- mean(alterData, na.rm = TRUE)
       else

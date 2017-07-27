@@ -1,9 +1,17 @@
 Package: hegomaps
 Title: Heatmaps for Ego Networks
 Version: 0.0.0.9000
-Authors@R: person("Phil", "Boileau", email = "philippe.boileau@mail.concordia.ca", role = "aut")
+Authors@R: person("Phil", "Boileau", role = c("aut", "cre"), email = "philippe.boileau@mail.concordia.ca")
+Author: Phil Boileau [aut, cre]
+Maintainer: Phil Boileau <philippe.boileau@mail.concordia.ca>
 Description: Create heatmaps to display ego characteristics and structural properties of multiple ego networks.
 Depends: R (>= 3.4.0)
-License: Licensed under the MIT License
+Imports: igraph,
+         stats,
+         heatmaply,
+         pvclust,
+         ggplot2
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+LazyData: false
+RoxygenNote: 6.0.1.9000

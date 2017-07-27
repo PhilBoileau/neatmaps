@@ -5,6 +5,8 @@
 #' 
 #' @param clusterList The list containing all the clusters of the 
 #'   hierarchical clustering.
+#'   
+#' @export
 formatCluster <- function(clusterList) {
   
   # print out the number of clusters

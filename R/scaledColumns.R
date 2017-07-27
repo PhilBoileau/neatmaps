@@ -6,9 +6,6 @@
 #'   distribution of the columns.
 #'  
 #' @param df The data frame of numerical values to be scaled.
-#' 
-#' @example 
-#' scaleColumns(mtcars)
 scaleColumns <- function(df){
   
   scaledDf <- as.data.frame(

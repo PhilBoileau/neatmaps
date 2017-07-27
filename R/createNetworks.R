@@ -11,6 +11,8 @@
 #'   is no edge between A and B, place a value of 0. Avoid redundant 
 #'   column names since all edges are assumed to be undirected, e.g. 
 #'   "XA_B" and "XB_A".
+#' 
+#' @importFrom igraph graph_from_edgelist
 createNetworks <- function(edge.df) {
   
   # make sure entered values are of the right type
@@ -40,7 +42,7 @@ createNetworks <- function(edge.df) {
     edgeList <- matrix(edgeList[-1, ], ncol = 2)
     
     # get a graph from the edge list and add it to the network list
-    networkList <- append(networkList, list(graph_from_edgelist(edgeList)))
+    networkList <- append(networkList, list(igraph::graph_from_edgelist(edgeList)))
   }
   
   return(networkList)

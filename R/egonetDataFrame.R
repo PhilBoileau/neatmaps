@@ -27,18 +27,12 @@
 #' @param measuresOfCent A vector of the measures of centrality to be used for the
 #'   summary of the alter attributes data. The supported measures of centrality
 #'   are: "mean", "mode" and "median". Defaults to "mean".
-#' @param homoVars A vector consisting of the name of the variables on which homophily
-#'   is to be measured. These variables are dropped from the final data frame since 
-#'   they are catigorical variables.
-#' @param homoMeasures A vector consisting of the various methods to calculate homophily
-#'   with. The supported measures are: "homophily", "EIindex" and "IQV".
 #' @export
-#' @author Phil Boileau <philippe.boileau@mail.concordia.ca>  
 #' @return The function returns a data frame that offers an overview of all of the
 #'   ego networks.
 
 egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df,
-                              measuresOfCent = c("mean"), scale.df = "none"){
+                              measuresOfCent = c("mean")){
 
   # Make sure that only data frames are being passed in to the three first arguments
   if(class(net.attr.df) != "data.frame" || class(alter.attr.df) != "data.frame" ||

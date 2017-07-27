@@ -4,8 +4,10 @@
 #' \code{getStructureAttr} produces a data frame of the structural attributes
 #'   of a list of ego networks.
 #'   
-#' @param egoList A list of Igraph network objects that represent the collection
+#' @param egonetList A list of Igraph network objects that represent the collection
 #'   of egonets.
+#' 
+#' @import igraph
 getStructureAttr <- function(egonetList){
   
   # make sure that the argument is a list of igraph objects

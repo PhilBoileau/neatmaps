@@ -4,6 +4,8 @@
 #' \code{hierarchy} calculates the hierarchy of an ego network
 #' 
 #' @param egonet An igraph object representing an ego network
+#' 
+#' @importFrom igraph constraint vcount ecount
 hierarchy <- function(egonet){
   
   # get the constraints of the network, their sum and the number of nodes
