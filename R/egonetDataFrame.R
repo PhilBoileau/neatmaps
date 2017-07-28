@@ -65,14 +65,3 @@ egonet.data.frame <- function(net.attr.df, alter.attr.df, edge.df,
   return(df)
   
 }
-
-
-
-
-
-
-
-
-
-
-

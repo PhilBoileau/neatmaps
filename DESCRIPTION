@@ -10,7 +10,9 @@ Imports: igraph,
          stats,
          heatmaply,
          pvclust,
-         ggplot2
+         ggplot2,
+         dendextend,
+         plotly
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: false

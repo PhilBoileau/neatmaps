@@ -1,0 +1,136 @@
+---
+title: "Template"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source_code: "https://github.com/PhilBoileau/hegomaps"
+    theme: cosmo
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(knitr)
+library(plotly)
+library(hegomaps)
+
+# Insert the name of the R file that you contains your network dataframe here.
+# Make sure the name of the data frame is 'df' if you want this file to work,
+# and add '## @knitr prepareData' to the top of the file.
+# Make changes to this Rmd file as needed.
+read_chunk("test.R")
+
+```
+```{r prepareData}
+```
+
+Single Linkage Method
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Heatmap
+
+```{r include=FALSE}
+set.seed(96)
+results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
+                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   link.method = "single")
+```
+```{r echo=FALSE}
+suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
+```
+
+
+Column {data-width=350, .tabset}
+-----------------------------------------------------------------------
+
+### Dendrogram
+
+```{r}
+plotDendrogram(dend = results[[1]],
+               results = results[[3]],
+               labelsCex = 0.5,
+               pCex = 0.6)
+```
+
+### Clusters
+
+```{r}
+formatCluster(results[[2]])
+```
+
+
+Average Linkage Method
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Heatmap
+
+```{r include=FALSE}
+set.seed(96)
+results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
+                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   link.method = "average")
+```
+```{r echo=FALSE}
+suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
+```
+
+Column {data-width=350, .tabset}
+-----------------------------------------------------------------------
+
+### Dendrogram
+
+```{r}
+plotDendrogram(dend = results[[1]],
+               results = results[[3]],
+               labelsCex = 0.5,
+               pCex = 0.6)
+```
+
+### Clusters
+
+```{r}
+formatCluster(results[[2]])
+```
+
+Complete Linkage Method
+======================================================================
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Heatmap
+
+```{r include=FALSE}
+set.seed(96)
+results <- hegomaps(df, scale.df = "basic", mainTitle = "", 
+                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   link.method = "complete")
+```
+```{r echo=FALSE}
+suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
+```
+
+Column {data-width=350, .tabset}
+-----------------------------------------------------------------------
+
+### Dendrogram
+
+```{r}
+plotDendrogram(dend = results[[1]],
+               results = results[[3]],
+               labelsCex = 0.5,
+               pCex = 0.6)
+```
+
+### Clusters
+
+```{r}
+formatCluster(results[[2]])
+```
+
