@@ -1,48 +1,46 @@
-#' @title Structural Attributes of Egonets Data Frame
+#' @title Structural Attributes of Networks Data Frame
 #' 
 #' @description 
 #' \code{getStructureAttr} produces a data frame of the structural attributes
-#'   of a list of ego networks.
+#'   of a list of networks.
 #'   
-#' @param egonetList A list of Igraph network objects that represent the collection
-#'   of egonets.
+#' @param netList A list of Igraph network objects that represent the collection
+#'   of networks.
+#'   
+#' @author Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 #' 
 #' @import igraph
-getStructureAttr <- function(egonetList){
+getStructureAttr <- function(netList){
   
   # make sure that the argument is a list of igraph objects
-  if(class(egonetList) != "list" ||
-     sum(sapply(egonetList, class) == "igraph") != length(egonetList))
-    stop("Please nter appropriate data as an argument.")
+  if(class(netList) != "list" ||
+     sum(sapply(netList, class) == "igraph") != length(netList))
+    stop("Please enter appropriate data as an argument.")
   
   # intialize the data frame that will contain all the information on
   # the structural characteristics of the data
-  egoListLen <- length(egonetList)
-  egoID <- 1:egoListLen
-  df <- as.data.frame(egoID)
+  listLen <- length(netList)
+  netID <- 1:listLen
+  df <- as.data.frame(netID)
   
-  # calculate the ego degree
-  df$egoDegree <- sapply(1:egoListLen, function(x) vcount(egonetList[[x]]))
+  # calculate the degree
+  df$netDegree <- sapply(1:listLen, function(x) vcount(netList[[x]]))
   # calculate the density
-  df$density <- sapply(1:egoListLen, function(x) graph.density(egonetList[[x]]))
+  df$density <- sapply(1:listLen, function(x) graph.density(netList[[x]]))
   # count the number of components
-  df$components <- sapply(1:egoListLen, function(x) count_components(egonetList[[x]]))
+  df$components <- sapply(1:listLen, function(x) count_components(netList[[x]]))
   # calculate the number of edges
-  df$edgeCount <- sapply(1:egoListLen, function(x) ecount(egonetList[[x]]))
-  # calculate the effective size (for ego networks)
-  df$effectiveSize <- df$egoDegree - (df$edgeCount * 2) / df$egoDegree
-  # calculate the efficieny of the networks
-  df$efficiency <- df$effectiveSize / df$egoDegree
-  # calculate the mean alter degree
-  df$meanAlterDegree <- (df$edgeCount * 2) / df$egoDegree
+  df$edgeCount <- sapply(1:listLen, function(x) ecount(netList[[x]]))
+  # calculate the mean node degree
+  df$meanNodeDegree <- (df$edgeCount * 2) / df$netDegree
   # calculate the constraint of the graphs
-  df$constraint <- sapply(1:egoListLen, function(x) sum(constraint(egonetList[[x]]), na.rm = TRUE) /
-                            df$egoDegree[x])
+  df$constraint <- sapply(1:listLen, function(x) sum(constraint(netList[[x]]), na.rm = TRUE) /
+                            df$netDegree[x])
   # calculate the hierarchy of the graphs
-  df$hierarchy <- sapply(1:egoListLen, function(x) hierarchy(egonetList[[x]]))
+  df$hierarchy <- sapply(1:listLen, function(x) hierarchy(netList[[x]]))
   
   # remove the ego ID
-  df$egoID <- NULL
+  df$netID <- NULL
   
   return(df)
   

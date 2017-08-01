@@ -1,9 +1,11 @@
 #' @title Hierarchy
 #' 
 #' @description
-#' \code{hierarchy} calculates the hierarchy of an ego network
+#' \code{hierarchy} calculates the hierarchy of a network
 #' 
-#' @param egonet An igraph object representing an ego network
+#' @param egonet An igraph object representing a network
+#' 
+#' @author Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 #' 
 #' @importFrom igraph constraint vcount ecount
 hierarchy <- function(egonet){

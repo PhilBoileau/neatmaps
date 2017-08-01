@@ -7,8 +7,11 @@
 hierarchy(egonet)
 }
 \arguments{
-\item{egonet}{An igraph object representing an ego network}
+\item{egonet}{An igraph object representing a network}
 }
 \description{
-\code{hierarchy} calculates the hierarchy of an ego network
+\code{hierarchy} calculates the hierarchy of a network
+}
+\author{
+Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

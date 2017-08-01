@@ -9,7 +9,7 @@ createNetworks(edge.df)
 \arguments{
 \item{edge.df}{A data frame where each row represents a different
 network and where each column represents a potential edge between
-alter A and alter B. The column names should be of the form "XA_B",
+node A and node B. The column names should be of the form "XA_B",
 where A and B are the node numbers in the network. If Node A or B
 do not exist in the specific network, leave a value of NA. If there
 is no edge between A and B, place a value of 0. Avoid redundant 
@@ -18,4 +18,7 @@ column names since all edges are assumed to be undirected, e.g.
 }
 \description{
 \code{createNetworks} creates Igraph network objects using an edge data frame
+}
+\author{
+Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

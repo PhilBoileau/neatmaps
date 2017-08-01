@@ -6,6 +6,8 @@
 #' @param clusterList The list containing all the clusters of the 
 #'   hierarchical clustering.
 #'   
+#' @author Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
+#'   
 #' @export
 formatCluster <- function(clusterList) {
   

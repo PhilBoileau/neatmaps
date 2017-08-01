@@ -5,7 +5,7 @@
 \title{Plot Dendrogram}
 \usage{
 plotDendrogram(dend, results, labelsCex, pCex, pAlpha = 0.95,
-  dendTitle = paste("Cluster Dendrogram with AU/BP values",
+  showSign = TRUE, dendTitle = paste("Cluster Dendrogram with AU/BP values",
   "(\%)\\n AU Values Highlighted by Signif"))
 }
 \arguments{
@@ -20,6 +20,9 @@ on the data.}
 
 \item{pAlpha}{The level of significance chosen to detect significant clusters.}
 
+\item{showSign}{A boolean indicating whether or not to add the p-values to the
+dendrogram.}
+
 \item{dendTitle}{The title of the dendrogram plot.}
 }
 \value{
@@ -28,11 +31,14 @@ The dendrogram with the statistical analysis provided
 }
 \description{
 \code{plotDendrogram} plots the dendrogram of the results of the analysis
-  performed by the hegomap function.
+  performed by the neatmap function.
 }
 \examples{
 \donttest{
 plotDendrogram(dend = dendrogram, results = pvclustResults,
                labelsCex = 0.5, pCex = 0.60, pAlpha = 0.95)
 }
+}
+\author{
+Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

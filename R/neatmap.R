@@ -1,16 +1,16 @@
-#' @title Heatmap of Ego Networks
+#' @title Heatmap of Networks
 #'
 #' @description
-#' \code{hegomap} produces a heatmap of ego networks and their characteristics
+#' \code{neatmap} produces a heatmap of networks and their characteristics
 #'
 #' @details
-#' This function generates a heatmap of ego networks and their various
-#' attributes from a data frame containing only numeric variables. These
+#' This function generates a heatmap of networks and their various
+#' characteristics from a data frame containing only numeric variables. These
 #' numeric values are then scaled using a chosen method. The hierarchical
 #' cluster analysis results used in the heatmap are also output. The 
 #' heatmap is produced using the \link{heatmaply} package.
 #' 
-#' @param df a dataframe of ego network attributes containing only
+#' @param df a dataframe of network attributes containing only
 #'   numeric values
 #' @param scale.df A string indicating whether the data frame should be scaled, and if so,
 #'   which method should be used. The options are "none", "basic", "normalize" and "percentize".
@@ -30,6 +30,8 @@
 #' @param xlabCex The font size of the elements on the x axis.
 #' @param ylabCex The font size of the elements on the y axis.
 #' @param heatmapMargins The size of the margins for the heatmap. See \link{heatmaply}.
+#' 
+#' @author Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 #'
 #' @export
 #' @importFrom stats as.dendrogram
@@ -42,11 +44,11 @@
 #'   the statistical analysis and the heatmap.
 #' @examples 
 #' \donttest{
-#' hegomaps(df, scale.df = "basic", mainTitle = "Heatmap", 
+#' neatmap(df, scale.df = "basic", mainTitle = "Heatmap", 
 #'            xlabel = "Chararacteritics", ylabel = "Networks",
 #'            link.method = "single", dist.method = "euclidean")
 #' }
-hegomaps <- function(df, scale.df, link.method = "average", dist.method = "euclidean",
+neatmap <- function(df, scale.df, link.method = "average", dist.method = "euclidean",
                      nBootRep = 1000, mainTitle  = "", xlabel, ylabel, xlabCex = 5,
                      ylabCex = 5, heatmapMargins = c(50, 50, 50, 100)){
   

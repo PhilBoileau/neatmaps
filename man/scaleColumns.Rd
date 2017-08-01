@@ -14,3 +14,6 @@ scaleColumns(df)
   between the values of 0 and 1 without changing the underlying
   distribution of the columns.
 }
+\author{
+Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
+}

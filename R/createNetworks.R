@@ -5,12 +5,14 @@
 #' 
 #' @param edge.df A data frame where each row represents a different
 #'   network and where each column represents a potential edge between
-#'   alter A and alter B. The column names should be of the form "XA_B",
+#'   node A and node B. The column names should be of the form "XA_B",
 #'   where A and B are the node numbers in the network. If Node A or B
 #'   do not exist in the specific network, leave a value of NA. If there
 #'   is no edge between A and B, place a value of 0. Avoid redundant 
 #'   column names since all edges are assumed to be undirected, e.g. 
 #'   "XA_B" and "XB_A".
+#'
+#' @author Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 #' 
 #' @importFrom igraph graph_from_edgelist
 createNetworks <- function(edge.df) {

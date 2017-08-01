@@ -2,7 +2,7 @@
 
 export(egonet.data.frame)
 export(formatCluster)
-export(hegomaps)
+export(neatmap)
 export(plotDendrogram)
 import(dendextend)
 import(igraph)

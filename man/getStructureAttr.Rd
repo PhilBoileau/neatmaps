@@ -2,15 +2,18 @@
 % Please edit documentation in R/getStructuralAttr.R
 \name{getStructureAttr}
 \alias{getStructureAttr}
-\title{Structural Attributes of Egonets Data Frame}
+\title{Structural Attributes of Networks Data Frame}
 \usage{
-getStructureAttr(egonetList)
+getStructureAttr(netList)
 }
 \arguments{
-\item{egonetList}{A list of Igraph network objects that represent the collection
-of egonets.}
+\item{netList}{A list of Igraph network objects that represent the collection
+of networks.}
 }
 \description{
 \code{getStructureAttr} produces a data frame of the structural attributes
-  of a list of ego networks.
+  of a list of networks.
+}
+\author{
+Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

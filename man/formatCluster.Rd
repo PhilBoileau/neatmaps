@@ -13,3 +13,6 @@ hierarchical clustering.}
 \description{
 \code{formatCluster} formats the output of the cluster analysis.
 }
+\author{
+Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
+}
