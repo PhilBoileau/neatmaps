@@ -43,10 +43,10 @@ plotDendrogram <- function(dend, results, labelsCex, pCex, pAlpha = 0.95, showSi
     pDend %>% dendextend::pvclust_show_signif(results, show_type = "lwd", signif_type = "au") %>%
       graphics::plot(main = dendTitle)
     res %>% graphics::text(cex = pCex)
-    res %>% pvclust::pvrect(alpha = pAlpha, border = 1)
+    res %>% pvclust::pvrect(alpha = pAlpha, border = 4)
   } else {
     pDend %>% graphics::plot(main = dendTitle)
-    res %>% pvclust::pvrect(alpha = pAlpha, border = 1)
+    res %>% pvclust::pvrect(alpha = pAlpha, border = 4)
     
   }
   

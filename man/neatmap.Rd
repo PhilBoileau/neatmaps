@@ -41,8 +41,8 @@ the hierarchical clustering. See \link{pvclust}.}
 \item{heatmapMargins}{The size of the margins for the heatmap. See \link{heatmaply}.}
 }
 \value{
-a list containing the dendrogram of the hierarchical clustering,
-  the results of the statistical analysis, the significant clusters of
+A list containing the dendrogram of the hierarchical clustering,
+  the significant clusters of the statistical analysis, the results of
   the statistical analysis and the heatmap.
 }
 \description{

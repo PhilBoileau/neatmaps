@@ -1,7 +1,7 @@
-#' @title Network Data Frame
+#' @title Networks Data Frame
 #' 
 #' @description 
-#' \code{network.data.frame} produces data frames of collections of networks.
+#' \code{netsDataFrame} produces data frames of collections of networks.
 #' 
 #' @details
 #' The function produces data frames of collections of networks. The function
@@ -31,7 +31,7 @@
 #' @return The function returns a data frame that offers an overview of all of the
 #'   ego networks.
 
-egonet.data.frame <- function(net.attr.df, node.attr.df, edge.df,
+netsDataFrame <- function(net.attr.df, node.attr.df, edge.df,
                               measuresOfCent = c("mean")){
 
   # Make sure that only data frames are being passed in to the three first arguments

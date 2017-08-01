@@ -39,8 +39,8 @@
 #' @importFrom pvclust pvclust pvpick
 #' @importFrom ggplot2 scale_fill_gradient2
 #' 
-#' @return a list containing the dendrogram of the hierarchical clustering,
-#'   the results of the statistical analysis, the significant clusters of
+#' @return A list containing the dendrogram of the hierarchical clustering,
+#'   the significant clusters of the statistical analysis, the results of
 #'   the statistical analysis and the heatmap.
 #' @examples 
 #' \donttest{

@@ -12,7 +12,7 @@ output:
 library(flexdashboard)
 library(knitr)
 library(plotly)
-library(hegomaps)
+library(neatmaps)
 
 # Insert the name of the R file that you contains your network dataframe here.
 # Make sure the name of the data frame is 'df' if you want this file to work,
@@ -62,22 +62,24 @@ Column {.tabset}
 
 ```{r include=FALSE}
 set.seed(96)
-results <- hegomaps(df, scale.df = "basic", mainTitle = "",
+results <- neatmap(df, scale.df = "basic", mainTitle = "",
                    xlabel = "Chararacteritics", ylabel = "Networks",
-                   link.method = "single")
+                   link.method = "single", xlabCex = 4)
 ```
+<div align="center">
 ```{r echo=FALSE}
 suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
 ```
-
+</div>
 
 ### Dendrogram
 
 ```{r}
 plotDendrogram(dend = results[[1]],
                results = results[[3]],
-               labelsCex = 0.5,
-               pCex = 0.6)
+               labelsCex = 0.45,
+               pCex = 0.4,
+               showSign = FALSE)
 ```
 
 ### Clusters
@@ -97,22 +99,24 @@ Column {.tabset}
 
 ```{r include=FALSE}
 set.seed(96)
-results <- hegomaps(df, scale.df = "basic", mainTitle = "",
+results <- neatmap(df, scale.df = "basic", mainTitle = "",
                    xlabel = "Chararacteritics", ylabel = "Networks",
-                   link.method = "average")
+                   link.method = "average", xlabCex = 4)
 ```
+<div align="center">
 ```{r echo=FALSE}
 suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
 ```
-
+</div>
 
 ### Dendrogram
 
 ```{r}
 plotDendrogram(dend = results[[1]],
                results = results[[3]],
-               labelsCex = 0.5,
-               pCex = 0.6)
+               labelsCex = 0.45,
+               pCex = 0.4,
+               showSign = FALSE)
 ```
 
 ### Clusters
@@ -131,14 +135,15 @@ Column {.tabset}
 
 ```{r include=FALSE}
 set.seed(96)
-results <- hegomaps(df, scale.df = "basic", mainTitle = "",
+results <- neatmap(df, scale.df = "basic", mainTitle = "",
                    xlabel = "Chararacteritics", ylabel = "Networks",
-                   link.method = "complete")
+                   link.method = "complete", xlabCex = 4)
 ```
+<div align="center">
 ```{r echo=FALSE}
 suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
 ```
-
+</div>
 
 ### Dendrogram
 
@@ -146,7 +151,8 @@ suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, he
 plotDendrogram(dend = results[[1]],
                results = results[[3]],
                labelsCex = 0.5,
-               pCex = 0.6)
+               pCex = 0.4,
+               showSign = FALSE)
 ```
 
 ### Clusters
