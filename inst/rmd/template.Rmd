@@ -28,13 +28,14 @@ Introduction
 ======================================================================
   
 **Foreword**  
-This guide should help you navigate and interpret the various results of this report. If you still have questions after reading this brief introduction, or if you wish to comment on it's design, feel free to contact me at <philippe.boileau@mail.concordia.ca>.  
+This guide should help you navigate and interpret the various results of this report. If you still have questions after reading this brief introduction, or if you wish to comment on it's design, feel free to contact me at [here](mailto:pboileau.swim@gmail.com).  
   
 **General**  
 Each tab contains a different [hierarchical cluster](https://en.wikipedia.org/wiki/Hierarchical_clustering) analysis of the same network data. The name of the tab indicates the [linkage method](https://en.wikipedia.org/wiki/Hierarchical_clustering#Linkage_criteria) used to form the clusters of the various network characteristics. Although many different linkage methods exist, only the single, average and complete methods are presented because their respective cluster groupings can be interpreted as follows:  
--Single: least conservative clusters, sensitive to outliers  
+-Single: least conservative clusters (i.e. significant clusters tend to be large), sensitive to outliers  
 -Average: a mix of single and complete, the most commonly used method  
--Complete: most conservative clusters, least susceptible to outliers  
+-Complete: most conservative clusters (i.e. significant clusters tend to be small), least susceptible to outliers  
+Within each of these tabs are three sub-tabs: *heatmap*, *dendrogram* and *clusters*. These three sections display the results of the hierarchical cluster analysis using the selected linkage method.
   
 **Heatmap**  
 This is the first figure that will be present on every page and is the meat of the report. [Heatmaps](http://www.nature.com/nmeth/journal/v9/n3/full/nmeth.1902.html) are widely used in biology to represent gene expression data, and they are gaining more and more popularity for their ability to depict multivariate data. This makes them a strong candidate for visualizing multiple networks and their characteristics all at once.  
@@ -46,7 +47,7 @@ The heatmaps were generated with the [heatmaply](https://cran.rstudio.com/web/pa
   
 **Dendrogram**  
 This is the dendrogram resulting from the hierarchical clustering of network variables. It represents the relationship of the similarities among the various variables. The lower the branches of two variables are joined, the more similar those variables are.  
-Included in the figure is a brief statistical analysis of the hierarchical clustering: variables contained in a blue box are said to be statistically significant with an alpha of 0.95. For more information on the software used to perform the analysis, check out the [pvclust](http://stat.sys.i.kyoto-u.ac.jp/prog/pvclust/) website.  
+Included in the figure is a brief statistical analysis of the hierarchical clustering: variables contained in a blue box are said to be statistically significant with an alpha of 0.05. For more information on the software used to perform the analysis, check out the [pvclust](http://stat.sys.i.kyoto-u.ac.jp/prog/pvclust/) website.  
   
 **Clusters**  
 This sub-tab lists the significant clusters that were found for the specific analysis. These are the same clusters that are boxed off in the blue rectangles on the previous sub-tab's dendrogram.  
@@ -68,7 +69,7 @@ results <- neatmap(df, scale.df = "basic", mainTitle = "",
 ```
 <div align="center">
 ```{r echo=FALSE}
-suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
+suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 800, height = 650))
 ```
 </div>
 
@@ -105,7 +106,7 @@ results <- neatmap(df, scale.df = "basic", mainTitle = "",
 ```
 <div align="center">
 ```{r echo=FALSE}
-suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
+suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 800, height = 650))
 ```
 </div>
 
@@ -141,7 +142,7 @@ results <- neatmap(df, scale.df = "basic", mainTitle = "",
 ```
 <div align="center">
 ```{r echo=FALSE}
-suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 850, height = 700))
+suppressWarnings(results[[4]] %>% layout(margin = list(b = 150), width = 800, height = 650))
 ```
 </div>
 

@@ -4,10 +4,10 @@
 \alias{hierarchy}
 \title{Hierarchy}
 \usage{
-hierarchy(egonet)
+hierarchy(net)
 }
 \arguments{
-\item{egonet}{An igraph object representing a network}
+\item{net}{An igraph object representing a network}
 }
 \description{
 \code{hierarchy} calculates the hierarchy of a network

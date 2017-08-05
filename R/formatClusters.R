@@ -9,6 +9,10 @@
 #' @author Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 #'   
 #' @export
+#' 
+#' @example
+#' data(clusterList)
+#' formatCluster(clusterList = clustList)
 formatCluster <- function(clusterList) {
   
   # print out the number of clusters

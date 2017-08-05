@@ -55,13 +55,6 @@ numeric values are then scaled using a chosen method. The hierarchical
 cluster analysis results used in the heatmap are also output. The 
 heatmap is produced using the \link{heatmaply} package.
 }
-\examples{
-\donttest{
-neatmap(df, scale.df = "basic", mainTitle = "Heatmap", 
-           xlabel = "Chararacteritics", ylabel = "Networks",
-           link.method = "single", dist.method = "euclidean")
-}
-}
 \author{
 Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

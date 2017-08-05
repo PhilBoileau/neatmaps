@@ -42,12 +42,14 @@
 #' @return A list containing the dendrogram of the hierarchical clustering,
 #'   the significant clusters of the statistical analysis, the results of
 #'   the statistical analysis and the heatmap.
-#' @examples 
-#' \donttest{
+#' @example
+#' df <- netsDataFrame(net.attr.df = networkAttrDF,
+#'                     node.attr.df = nodeAttrDF,
+#'                     edge.df = edgeDF)
 #' neatmap(df, scale.df = "basic", mainTitle = "Heatmap", 
 #'            xlabel = "Chararacteritics", ylabel = "Networks",
 #'            link.method = "single", dist.method = "euclidean")
-#' }
+#' 
 neatmap <- function(df, scale.df, link.method = "average", dist.method = "euclidean",
                      nBootRep = 1000, mainTitle  = "", xlabel, ylabel, xlabCex = 5,
                      ylabCex = 5, heatmapMargins = c(50, 50, 50, 100)){

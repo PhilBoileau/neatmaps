@@ -33,12 +33,6 @@ The dendrogram with the statistical analysis provided
 \code{plotDendrogram} plots the dendrogram of the results of the analysis
   performed by the neatmap function.
 }
-\examples{
-\donttest{
-plotDendrogram(dend = dendrogram, results = pvclustResults,
-               labelsCex = 0.5, pCex = 0.60, pAlpha = 0.95)
-}
-}
 \author{
 Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

@@ -25,11 +25,19 @@
 #' @return The dendrogram with the statistical analysis provided 
 #'   by \link{pvclust}.
 #' 
-#' @examples
-#' \donttest{
+#' @example
+#' df <- netsDataFrame(net.attr.df = networkAttrDF,
+#'                     node.attr.df = nodeAttrDF,
+#'                     edge.df = edgeDF)
+#' results <- neatmap(df, scale.df = "basic", mainTitle = "Heatmap", 
+#'                     xlabel = "Chararacteritics", ylabel = "Networks",
+#'                     link.method = "single", dist.method = "euclidean",
+#'                     nBootRep = 100)
+#' dendrogram <- results[[1]]
+#' pvclustResults <- results[[3]]
 #' plotDendrogram(dend = dendrogram, results = pvclustResults,
 #'                labelsCex = 0.5, pCex = 0.60, pAlpha = 0.95)
-#' }
+#'
 plotDendrogram <- function(dend, results, labelsCex, pCex, pAlpha = 0.95, showSign = TRUE,
                            dendTitle = 
                              paste("Cluster Dendrogram with AU/BP values",

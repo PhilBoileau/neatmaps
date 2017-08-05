@@ -30,6 +30,11 @@
 #' @export
 #' @return The function returns a data frame that offers an overview of all of the
 #'   ego networks.
+#'   
+#' @example
+#' netsDataFrame(net.attr.df = networkAttrDF,
+#'               node.attr.df = nodeAttrDF,
+#'               edge.df = edgeDF)
 
 netsDataFrame <- function(net.attr.df, node.attr.df, edge.df,
                               measuresOfCent = c("mean")){

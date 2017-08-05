@@ -3,18 +3,18 @@
 #' @description
 #' \code{hierarchy} calculates the hierarchy of a network
 #' 
-#' @param egonet An igraph object representing a network
+#' @param net An igraph object representing a network
 #' 
 #' @author Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 #' 
 #' @importFrom igraph constraint vcount ecount
-hierarchy <- function(egonet){
+hierarchy <- function(net){
   
   # get the constraints of the network, their sum and the number of nodes
-  cons <- constraint(egonet)
+  cons <- constraint(net)
   cons[is.nan(cons)] <- 0
   sumCons <- sum(cons)
-  neigh <- vcount(egonet)
+  neigh <- vcount(net)
   
   # calculate the vectors needed to perform the calculation
   v1 <- cons / (sumCons / neigh)
@@ -22,7 +22,7 @@ hierarchy <- function(egonet){
   v2[is.infinite(v2)] <- 0
   h <- sum(v1 * v2) / (neigh * log(neigh))
   
-  if(ecount(egonet) == 0)
+  if(ecount(net) == 0)
     h <- 0
   
   return(h)
