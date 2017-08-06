@@ -13,6 +13,11 @@ hierarchical clustering.}
 \description{
 \code{formatCluster} formats the output of the cluster analysis.
 }
+\examples{
+# dummy cluster results
+clustList <- list(c("A", "B"), c("C", "D", "E"))
+formatCluster(clusterList = clustList)
+}
 \author{
 Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

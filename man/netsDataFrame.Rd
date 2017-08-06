@@ -39,6 +39,11 @@ must represent individual  networks, and must therefore have identical row
 length. Measures of centrality used in the summarization of the node attributes
 must also be furnished.
 }
+\examples{
+df <- netsDataFrame(net.attr.df = networkAttrDF,
+                    node.attr.df = nodeAttrDF,
+                    edge.df = edgeDF)
+}
 \author{
 Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

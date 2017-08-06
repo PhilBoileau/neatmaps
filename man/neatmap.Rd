@@ -55,6 +55,16 @@ numeric values are then scaled using a chosen method. The hierarchical
 cluster analysis results used in the heatmap are also output. The 
 heatmap is produced using the \link{heatmaply} package.
 }
+\examples{
+df <- netsDataFrame(net.attr.df = networkAttrDF,
+                    node.attr.df = nodeAttrDF,
+                    edge.df = edgeDF)
+heatmap <- neatmap(df, scale.df = "basic", mainTitle = "Heatmap", 
+                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   link.method = "single", dist.method = "euclidean",
+                   nBootRep = 100)
+
+}
 \author{
 Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
 }

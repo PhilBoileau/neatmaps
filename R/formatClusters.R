@@ -10,8 +10,9 @@
 #'   
 #' @export
 #' 
-#' @example
-#' data(clusterList)
+#' @examples
+#' # dummy cluster results
+#' clustList <- list(c("A", "B"), c("C", "D", "E"))
 #' formatCluster(clusterList = clustList)
 formatCluster <- function(clusterList) {
   
