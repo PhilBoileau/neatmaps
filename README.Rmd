@@ -1,7 +1,18 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-neatmaps
-========
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# neatmaps
 
 [![](http://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html)
 
@@ -11,14 +22,14 @@ The goal of the neatmaps package is to simplify the exploratory data analysis pr
 
 ### Installation
 
-``` r
+``` {r, eval=FALSE}
 # To install neatmaps, simply run the following code:
 install.packages('neatmaps')
 ```
 
 ### Code Example
 
-``` r
+```{r, eval=FALSE}
 library(neatmaps)
 
 # Create a "cleaned" dataframe using the netsDataFrame function
@@ -37,14 +48,12 @@ resultsList <- neatmap(df, scale.df = "basic", mainTitle = "Heatmap",
 ```
 
 To display the heatmap:
-
-``` r
+```{r, eval=FALSE}
 resultsList[[4]]
 ```
 
 To display the dendrogram:
-
-``` r
+```{r, eval=FALSE}
 library(plotly)
 
 plotDendrogram(dend = resultsList[[1]],
@@ -55,7 +64,7 @@ plotDendrogram(dend = resultsList[[1]],
 
 To list the significant clusters
 
-``` r
+``` {r, eval=FALSE}
 formatCluster(resultsList[[2]])
 ```
 
