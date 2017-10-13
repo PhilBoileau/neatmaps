@@ -45,15 +45,13 @@ resultsList[[4]]
 To display the dendrogram:
 
 ``` r
-library(plotly)
-
 plotDendrogram(dend = resultsList[[1]],
                results = resultsList[[3]],
                labelsCex = 1,
                pCex = 1)
 ```
 
-To list the significant clusters
+To list the significant clusters:
 
 ``` r
 formatCluster(resultsList[[2]])
