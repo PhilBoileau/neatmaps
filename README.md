@@ -3,7 +3,7 @@
 neatmaps
 ========
 
-[![](http://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](https://CRAN.R-project.org/package=neatmaps) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](https://CRAN.R-project.org/package=neatmaps)
 
 ### Overview
 
@@ -31,9 +31,10 @@ df <- netsDataFrame(net.attr.df = networkAttrDF,
 # clusters of the bootstrap analysis, the results of the statistical analysis
 # and the heatmap.
 resultsList <- neatmap(df, scale.df = "basic", mainTitle = "Heatmap", 
-                   xlabel = "Chararacteritics", ylabel = "Networks",
+                   xlabel = "", ylabel = "Networks",
                    link.method = "single", dist.method = "euclidean",
-                   nBootRep = 100)
+                   nBootRep = 100, xlabCex = 1, ylabCex = 1,
+                   heatmapMargins = c(100, 50, 50, 100))
 ```
 
 To display the heatmap:
@@ -42,25 +43,10 @@ To display the heatmap:
 resultsList[[4]]
 ```
 
-To display the dendrogram:
-
-``` r
-plotDendrogram(dend = resultsList[[1]],
-               results = resultsList[[3]],
-               labelsCex = 1,
-               pCex = 1)
-```
-
-To list the significant clusters:
-
-``` r
-formatCluster(resultsList[[2]])
-```
-
 ### Dynamic Report
 
 A dynamic report template has been included in the `inst/rmd` directory. Follow the instruction at the top of `template.Rmd` to create a dynamic report using your own data.
 
 ### Documentation
 
-Available on [CRAN](https://cran.r-project.org/web/packages/neatmaps/neatmaps.pdf).
+Available on [CRAN](https://CRAN.R-project.org/package=neatmaps/neatmaps.pdf).
