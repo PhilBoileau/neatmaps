@@ -56,7 +56,6 @@
 #' @author Philippe Boileau, \email{philippe_boileau (at) berkeley.edu}
 #'
 #' @export
-#' @importFrom stats as.dendrogram
 #' @importFrom heatmaply percentize heatmaply
 #' @importFrom ggplot2 scale_fill_gradient2
 #' @importFrom ConsensusClusterPlus ConsensusClusterPlus
@@ -80,7 +79,7 @@
 neatmap <- function(df, scale_df, link_method = "average", 
                     dist_method = "euclidean", max_k = 10,
                     reps = 1000, p_var = 1, p_net = 0.8, cc_seed = 100,
-                    main_title  = "", xlab, ylab, xlab_cex = 5, ylab_cex = 5,
+                    main_title  = "", xlab, ylab, xlab_cex = 1, ylab_cex = 1,
                     heatmap_margins = c(50, 50, 50, 100)){
   
   # check dataframe to make sure that it only contains numeric values
@@ -88,11 +87,11 @@ neatmap <- function(df, scale_df, link_method = "average",
     stop("Please input a dataframe that contains exclusively numeric values")
   
   # scale the data based on user selection
-  if(scale.df == "ecdf")
+  if(scale_df == "ecdf")
     df <- scaleColumns(df)
-  else if(scale.df == "normalize")
+  else if(scale_df == "normalize")
     df <- scale(df)
-  else if(scale.df == "percentize")
+  else if(scale_df == "percentize")
     df <- heatmaply::percentize(df)
   
   # perform the consensus clustering on the scaled data frame
@@ -112,17 +111,17 @@ neatmap <- function(df, scale_df, link_method = "average",
   hm <- heatmaply::heatmaply(df,
                              dist_method = dist_method,
                              hclust_method = link_method,
-                             main = mainTitle,
+                             main = main_title,
                              seriate = "OLO",
-                             xlab = xlabel,
-                             ylab = ylabel,
-                             margins = heatmapMargins,
+                             xlab = xlab,
+                             ylab = ylab,
+                             margins = heatmap_margins,
                              scale_fill_gradient_fun = 
                                ggplot2::scale_fill_gradient2(low = "blue",
                                                              high = "red",
                                                              midpoint = 0.5),
-                             cexRow = ylabCex,
-                             cexCol = xlabCex)
+                             cexRow = ylab_cex,
+                             cexCol = xlab_cex)
   
   return(list(hm, results))
 }
