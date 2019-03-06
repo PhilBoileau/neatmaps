@@ -39,12 +39,6 @@
 #'   clustering. Defaults to 0.8.
 #' @param cc_seed The seed used to ensure the reproducibility of the consensus 
 #'   clustering. Defaults to 1. 
-#' @param cc_dir String value for output directory of consensus clustering 
-#'   results. These results are created using \link{ConsensusClusterPlus}'s
-#'   built-in visualization methods. \link{neatmaps} also has functions for
-#'   visualizing these results (link functions here).
-#' @param plot_type String value of file type for plots. Options are "pdf",
-#'   "png" and "pngBMP". "pngBMP" is especially useful for large datasets.
 #' @param main_itle The title of the heatmap.
 #' @param xlab The x axis label of the heatmap.
 #' @param ylab The y axis label of the heatmap.
@@ -95,7 +89,7 @@ neatmap <- function(df, scale_df, link_method = "average",
     df <- heatmaply::percentize(df)
   
   # perform the consensus clustering on the scaled data frame
-  results <- ConsensusClusterPlus(as.matrix(df),
+  results <- consensusClusterNoPlots(as.matrix(df),
                                   maxK = max_k,
                                   innerLinkage = link_method,
                                   reps = reps,
@@ -104,8 +98,7 @@ neatmap <- function(df, scale_df, link_method = "average",
                                   clusterAlg = "hc",
                                   distance = dist_method,
                                   seed = cc_seed,
-                                  title = "./consensus_cluster_results",
-                                  plot = "pdf")
+                                  plot = NULL)
   
   # create the heatmap
   hm <- heatmaply::heatmaply(df,
