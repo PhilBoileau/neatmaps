@@ -39,7 +39,7 @@
 #'   clustering. Defaults to 0.8.
 #' @param cc_seed The seed used to ensure the reproducibility of the consensus 
 #'   clustering. Defaults to 1. 
-#' @param main_itle The title of the heatmap.
+#' @param main_title The title of the heatmap.
 #' @param xlab The x axis label of the heatmap.
 #' @param ylab The y axis label of the heatmap.
 #' @param xlab_cex The font size of the elements on the x axis.
@@ -62,13 +62,20 @@
 #'   (list functions).
 #'   
 #' @examples
-#' df <- netsDataFrame(net.attr.df = networkAttrDF,
-#'                     node.attr.df = nodeAttrDF,
-#'                     edge.df = edgeDF)
-#' heatmap <- neatmap(df, scale.df = "ecdf", mainTitle = "Heatmap", 
-#'                    xlabel = "Characteristics", ylabel = "Networks",
-#'                    link.method = "single", dist.method = "euclidean",
-#'                    nBootRep = 10)
+#' # create the data frame using the network, node and edge attributes
+#' df <- netsDataFrame(net_attr_df = networkAttrDF,
+#'                     node_attr_df = nodeAttrDF,
+#'                     edge_df = edgeDF)
+#' 
+#' # run the neatmap code on df
+#' neat_res <- neatmap(df, scale_df = "ecdf", max_k = 3, reps = 100, 
+#'                     xlab = "vars", ylab = "nets", xlab_cex = 1, ylab_cex = 1)
+#' 
+#' # extract the heatmap
+#' heatmap <- neat_res[[1]]
+#' 
+#' # extract the consensus clustering results
+#' consensus_res <- neat_res[[2]]
 #' 
 neatmap <- function(df, scale_df, link_method = "average", 
                     dist_method = "euclidean", max_k = 10,
@@ -89,16 +96,14 @@ neatmap <- function(df, scale_df, link_method = "average",
     df <- heatmaply::percentize(df)
   
   # perform the consensus clustering on the scaled data frame
-  results <- consensusClusterNoPlots(as.matrix(df),
-                                  maxK = max_k,
-                                  innerLinkage = link_method,
-                                  reps = reps,
-                                  pItem = p_var,
-                                  pFeature = p_net,
-                                  clusterAlg = "hc",
-                                  distance = dist_method,
-                                  seed = cc_seed,
-                                  plot = NULL)
+  results <- consensusClusterNoPlots(df,
+                                     max_k = max_k,
+                                     link_method = link_method,
+                                     reps = reps,
+                                     p_var = p_var,
+                                     p_net = p_net,
+                                     dist_method = dist_method,
+                                     cc_seed = cc_seed)
   
   # create the heatmap
   hm <- heatmaply::heatmaply(df,
