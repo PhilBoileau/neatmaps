@@ -47,7 +47,7 @@
 #' @param heatmap_margins The size of the margins for the heatmap. 
 #'   See \link{heatmaply}.
 #' 
-#' @author Philippe Boileau, \email{philippe_boileau (at) berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
 #'
 #' @export
 #' @importFrom heatmaply percentize heatmaply
@@ -63,9 +63,9 @@
 #'   
 #' @examples
 #' # create the data frame using the network, node and edge attributes
-#' df <- netsDataFrame(net_attr_df = networkAttrDF,
-#'                     node_attr_df = nodeAttrDF,
-#'                     edge_df = edgeDF)
+#' df <- netsDataFrame(network_attr_df,
+#'                     node_attr_df,
+#'                     edge_df)
 #' 
 #' # run the neatmap code on df
 #' neat_res <- neatmap(df, scale_df = "ecdf", max_k = 3, reps = 100, 

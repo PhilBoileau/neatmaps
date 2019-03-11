@@ -5,7 +5,7 @@
 #' 
 #' @param net An igraph object representing a network
 #' 
-#' @author Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
 #' 
 #' @importFrom igraph constraint vcount ecount
 hierarchy <- function(net){

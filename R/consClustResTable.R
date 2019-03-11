@@ -18,13 +18,13 @@
 #' statistics, see
 #' \href{https://link.springer.com/article/10.1023\%2FA\%3A1023949509487}{Monti et al.}. 
 #' 
-#' @import dplyr
+#' @importFrom dplyr filter_at filter all_vars select left_join transmute pull
 #' 
 #' @examples
 #' # create the data frame using the network, node and edge attributes
-#' df <- netsDataFrame(net_attr_df = networkAttrDF,
-#'                     node_attr_df = nodeAttrDF,
-#'                     edge_df = edgeDF)
+#' df <- netsDataFrame(network_attr_df,
+#'                     node_attr_df,
+#'                     edge_df)
 #' 
 #' # run the neatmap code on df
 #' neat_res <- neatmap(df, scale_df = "ecdf", max_k = 3, reps = 100, 

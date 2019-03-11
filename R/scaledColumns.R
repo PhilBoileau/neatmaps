@@ -5,7 +5,7 @@
 #' values of 0 and 1 without changing the underlying distribution of the
 #' columns.
 #'   
-#' @author Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
 #'  
 #' @param df The data frame of numerical values to be scaled.
 scaleColumns <- function(df){
@@ -17,6 +17,6 @@ scaleColumns <- function(df){
     })
   )
   
-  return(scaledDf)
+  return(scaled_df)
   
 }   
