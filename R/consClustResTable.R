@@ -18,7 +18,7 @@
 #' statistics, see
 #' \href{https://link.springer.com/article/10.1023\%2FA\%3A1023949509487}{Monti et al.}. 
 #' 
-#' @importFrom dplyr filter_at select filter left_join transmute pull
+#' @import dplyr
 #' 
 #' @examples
 #' # create the data frame using the network, node and edge attributes
@@ -69,7 +69,7 @@ consClustResTable <- function(neatmap_res) {
       
       # extract the column of variables in cluster j of iteration i
       var_col <- clusters_df %>% 
-                   dplyr::filter_at(i, all_vars(. == j)) %>% 
+                   dplyr::filter_at(i, dplyr::all_vars(. == j)) %>% 
                    dplyr::select(variables)
       
       # extract the item consensus in cluster j of iteration i
