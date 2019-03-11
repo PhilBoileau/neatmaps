@@ -1,6 +1,6 @@
-#' @name edgeDF
+#' @name edge_df
 #' 
-#' @title Edge List Data
+#' @title Edge List Data Frame
 #'  
 #' @description 
 #'  A dataset containg a list of undirected edges for ten different networks.
@@ -8,7 +8,7 @@
 #'  data are saved in their resepective files.
 #' 
 #' @docType data
-#' @usage edgeDF
+#' @usage edge_df
 #' 
 #' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
-"edgeDF"
+"edge_df"
