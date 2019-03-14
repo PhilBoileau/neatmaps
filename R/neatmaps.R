@@ -6,6 +6,8 @@
 #' \href{ https://CRAN.R-project.org/package=neatmaps}{CRAN}
 #' or \href{https://github.com/PhilBoileau/neatmaps/tree/master}{GitHub}
 #'
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu}
+#'
 #' @docType package
 #' @name neatmaps
 NULL

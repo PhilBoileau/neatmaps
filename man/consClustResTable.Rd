@@ -7,15 +7,15 @@
 consClustResTable(neatmap_res)
 }
 \arguments{
-\item{neatmap_res}{Output from the \link{neatmap} function.}
+\item{neatmap_res}{Output from the \code{\link{neatmap}} function.}
 }
 \description{
 \code{consClustResTable} presents a table of the consensus cluster results.
 The table presents the results of each iteration of the 
-\link{ConsensusClusterPlus} algorithm, the cluster consensus of each cluster
-and the list of the cluster elements with their corresponding item consensus.
-The item consensus is taken with respect to the variable's cluster
-allocation.
+\code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}} algorithm, the
+cluster consensus of each cluster and the list of the cluster elements with
+their corresponding item consensus. The item consensus is taken with respect
+to the variable's cluster allocation.
 }
 \examples{
 # create the data frame using the network, node and edge attributes

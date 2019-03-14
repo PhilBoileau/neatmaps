@@ -12,7 +12,7 @@
 #'   which to summarize the node attributes. The supported measures are "mean"
 #'   and "median". Note that missing values are exluded from the calculations.
 #'   
-#' @author Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau , \email{philippe_boileau@@berkeley.edu}
 #'   
 #' @importFrom stats median
 #' 

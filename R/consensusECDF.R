@@ -12,7 +12,7 @@
 #'
 #' @param neatmap_res Output from the \code{\link{neatmap}} function.
 #'
-#' @author Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau , \email{philippe_boileau@@berkeley.edu}
 #'
 #' @return Returns a ggplot depicting the ECDFs of each iteration of the
 #' consensus clustering, i.e. one ECDF per number of clusters used in each
@@ -58,8 +58,11 @@ consensusECDF <- function(neatmap_res){
     # compute the ecdf of the consensus matrix
     Fn <- stats::ecdf(values)
     
+    # remove any ties
+    values <- unique(values)
+    
     # pass it in to the ecdf
-    ecdf_vals <- Fn(values)
+    ecdf_vals <- Fn(unique(values))
     
     # get the iterations label
     iter_lab <- rep(i, length(values))
@@ -77,7 +80,6 @@ consensusECDF <- function(neatmap_res){
     geom_line() + xlab("Consensus values") + ylab("ECDF") +
     scale_colour_discrete(name = "Number of clusters") +
     ggtitle("ECDF of Consensus Cluster Matrices") + theme_minimal()
-  
   
   return(p)
 }

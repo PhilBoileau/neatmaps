@@ -7,7 +7,7 @@
 #'
 #' @param neatmap_res Output from the \code{\link{neatmap}} function.
 #'
-#' @author Philippe Boileau , \email{philippe_boileau@berkeley.edu} 
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu} 
 #'
 #' @references For more information on the consensus matrices, see
 #' \href{https://link.springer.com/article/10.1023\%2FA\%3A1023949509487}{Monti et al.}.
@@ -67,11 +67,11 @@ consensusChangeECDF <- function(neatmap_res){
   rel_change <- c(auc_vec[1], diff(auc_vec)/(auc_vec[1:(length(auc_vec)-1)]))
   
   # create the data frame of the results
-  df <- data.frame("iter" = seq(2, length(neatmap_res)),
-                   "rel_change" = rel_change)
+  iter <- seq(2, length(neatmap_res))
+  df <- data.frame(iter, rel_change)
   
   # create the scree plot
-  p <- ggplot(df, aes(x = "iter", y = "rel_change")) +
+  p <- ggplot(df, aes(x = iter, y = rel_change)) +
     geom_line() + geom_point() + 
     ylab("Relative change") + xlab("Number of clusters") + 
     ggtitle(paste0("Relative Change in Area Under the ECDF of \n",

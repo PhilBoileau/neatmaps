@@ -2,17 +2,18 @@
 #' 
 #' @description 
 #'   \code{consensusClusterNoPlots} is a wrapper function for
-#'   \link{ConsensusClusterPlus} that suppressess the the creation of the
-#'   plots that are created automatically.
+#'   \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}}that suppressess
+#'   the creation of the plots that are created automatically.
 #' 
 #' @param df A dataframe of network attributes containing only numeric values.
 #'   The columns of the dataframe should likely be normalized.
 #' @param link_method The agglomeration method to be used for hierarchical 
 #'   clustering. Defaults to the average linkage method. See other methods in
-#'   \link{hclust}.
+#'   \code{\link[stats]{hclust}}.
 #' @param dist_method The distance measure to be used between columns and 
 #'   between rows of the dataframe. Distance is used as a measure of similarity.
-#'   Defaults to euclidean distance. See other options in \link{dist}.
+#'   Defaults to euclidean distance. See other options in
+#'   \code{\link[stats]{dist}}.
 #' @param max_k The maximum number of clusters to consider in the consensus
 #'   clustering step. Consensus clustering will be performed for max_k-1 
 #'   iterations, i.e. for 2, 3, ..., max_k clusters. Defaults to 10.
@@ -25,7 +26,7 @@
 #' @param cc_seed The seed used to ensure the reproducibility of the consensus 
 #'   clustering. Defaults to 1.  
 #'  
-#'  @author Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+#'  @author Philippe Boileau , \email{philippe_boileau@@berkeley.edu}
 #'  
 #'  @importFrom ConsensusClusterPlus ConsensusClusterPlus
 #'  @importFrom grDevices png dev.off

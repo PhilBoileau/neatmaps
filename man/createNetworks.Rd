@@ -18,8 +18,8 @@ assumed to be undirected, e.g. avoid "XA_B" and "XB_A".}
 \description{
 \code{createNetworks} creates Igraph network objects using an edge data
   frame. This is important for computing structural properties of the 
-  networks to be explored by \link{neatmap}.
+  networks to be explored by \code{\link{neatmap}}.
 }
 \author{
-Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+Philippe Boileau, \email{philippe_boileau@berkeley.edu}
 }

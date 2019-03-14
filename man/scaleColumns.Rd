@@ -15,5 +15,5 @@ values of 0 and 1 without changing the underlying distribution of the
 columns.
 }
 \author{
-Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+Philippe Boileau, \email{philippe_boileau@berkeley.edu}
 }

@@ -8,12 +8,12 @@ calcICLNoPlots(consensus_results)
 }
 \arguments{
 \item{consensus_results}{Results of consensus clustering. The second item
-in the list returned by \link{neatmap}.}
+in the list returned by \code{\link{neatmap}}.}
 }
 \description{
 \code{consensusClusterNoPlots} is a wrapper function for
-  \link{ConsensusClusterPlus} that suppressess the the creation of the
-  plots that are created automatically.
+  \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}} that suppressess
+  the creation of the plots that are created automatically.
 }
 \author{
 Philippe Boileau , \email{philippe_boileau@berkeley.edu}

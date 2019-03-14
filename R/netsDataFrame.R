@@ -25,7 +25,7 @@
 #'   summary of the node attributes data. The supported measures of centrality
 #'   are: "mean" and "median".
 #'   
-#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu}
 #'   
 #' @export
 #' @return The function returns a data frame that offers an overview of all of the

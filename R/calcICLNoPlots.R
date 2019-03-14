@@ -2,13 +2,13 @@
 #' 
 #' @description 
 #'   \code{consensusClusterNoPlots} is a wrapper function for
-#'   \link{ConsensusClusterPlus} that suppressess the the creation of the
-#'   plots that are created automatically.
+#'   \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}} that suppressess
+#'   the creation of the plots that are created automatically.
 #' 
 #' @param consensus_results Results of consensus clustering. The second item
-#'   in the list returned by \link{neatmap}.
+#'   in the list returned by \code{\link{neatmap}}.
 #'  
-#' @author Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau , \email{philippe_boileau@@berkeley.edu}
 #'  
 #' @importFrom ConsensusClusterPlus calcICL
 #' @importFrom grDevices png dev.off

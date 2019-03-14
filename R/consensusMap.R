@@ -11,7 +11,7 @@
 #' function. The default clustering method used in the heatmaps is hierarchical
 #' clustering using the average linkage method, though other linkage methods
 #' can be used. The consensus cluster matrix is used as a measure of similarity.
-#' The heatmaps are produced using the \code{\link{heatmaply}} package.
+#' The heatmaps are produced using \code{\link[heatmaply]{heatmaply}}.
 #' 
 #' @references For more information on the consensus matrices, see
 #' \href{https://link.springer.com/article/10.1023\%2FA\%3A1023949509487}{Monti et al.}. 
@@ -19,9 +19,9 @@
 #' @param neatmap_res Output from the \code{\link{neatmap}} function.
 #' @param link_method The agglomeration method to be used for hierarchical 
 #'   clustering. Defaults to the average linkage method. See other methods in
-#'   \code{\link{hclust}}.
+#'   \code{\link[stats]{hclust}}.
 #' 
-#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu}
 #' 
 #' @importFrom heatmaply heatmaply
 #' @importFrom ggplot2 scale_fill_gradient2

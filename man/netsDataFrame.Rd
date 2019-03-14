@@ -46,5 +46,5 @@ df <- netsDataFrame(network_attr_df,
                     edge_df)
 }
 \author{
-Phil Boileau , \email{philippe.boileau@mail.concordia.ca}
+Philippe Boileau, \email{philippe_boileau@berkeley.edu}
 }

@@ -13,11 +13,12 @@ The columns of the dataframe should likely be normalized.}
 
 \item{link_method}{The agglomeration method to be used for hierarchical 
 clustering. Defaults to the average linkage method. See other methods in
-\link{hclust}.}
+\code{\link[stats]{hclust}}.}
 
 \item{dist_method}{The distance measure to be used between columns and 
 between rows of the dataframe. Distance is used as a measure of similarity.
-Defaults to euclidean distance. See other options in \link{dist}.}
+Defaults to euclidean distance. See other options in
+\code{\link[stats]{dist}}.}
 
 \item{max_k}{The maximum number of clusters to consider in the consensus
 clustering step. Consensus clustering will be performed for max_k-1 
@@ -42,6 +43,6 @@ clustering. Defaults to 0.8.}
 }
 \description{
 \code{consensusClusterNoPlots} is a wrapper function for
-  \link{ConsensusClusterPlus} that suppressess the the creation of the
-  plots that are created automatically.
+  \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}}that suppressess
+  the creation of the plots that are created automatically.
 }

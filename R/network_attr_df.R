@@ -11,5 +11,5 @@
 #' 
 #' @docType data
 #' @usage network_attr_df
-#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu}
 "network_attr_df" 

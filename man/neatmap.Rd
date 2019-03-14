@@ -23,11 +23,12 @@ transformed into percentiles.}
 
 \item{link_method}{The agglomeration method to be used for hierarchical 
 clustering. Defaults to the average linkage method. See other methods in
-\link{hclust}.}
+\code{\link[stats]{hclust}}.}
 
 \item{dist_method}{The distance measure to be used between columns and 
 between rows of the dataframe. Distance is used as a measure of similarity.
-Defaults to euclidean distance. See other options in \link{dist}.}
+Defaults to euclidean distance. See other options in 
+\code{\link[stats]{dist}}.}
 
 \item{max_k}{The maximum number of clusters to consider in the consensus
 clustering step. Consensus clustering will be performed for max_k-1 
@@ -56,15 +57,16 @@ clustering. Defaults to 1.}
 \item{ylab_cex}{The font size of the elements on the y axis.}
 
 \item{heatmap_margins}{The size of the margins for the heatmap. 
-See \link{heatmaply}.}
+See \code{\link[heatmaply]{heatmaply}}.}
 }
 \value{
 A list containing the heatmap of the multi-network data and a list of
   length max_k-1 where each element is a list containing the consensus 
   matrix, the consensus hierarchical clustering results and the consensus
   class assigements. The list of results produced by the consensus clustering
-  can be parsed using following functions in the \link{neatmaps} package:
-  (list functions).
+  can be parsed using following functions in the \code{\link{neatmaps}}
+  package: \code{\link{consClustResTable}}, \code{\link{consensusECDF}} and
+  \code{\link{consensusChangeECDF}}.
 }
 \description{
 \code{neatmap} produces a heatmap of multi-network data and identifies stable
@@ -77,7 +79,9 @@ associations presented within it. \code{neatmap} requires that the data
 frame be processed into an appropriate format prior to use. Data is then 
 scaled (if necessary) using of the built in methods. See (list functions) for
 further details on how to prepare multi-network data for use with 
-\code{neatmap}.
+\code{neatmap}. The heatmap is created using
+\code{\link[heatmaply]{heatmaply}} and the consensus clustering is performed
+using \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}}
 }
 \examples{
 # create the data frame using the network, node and edge attributes
@@ -96,6 +100,10 @@ heatmap <- neat_res[[1]]
 consensus_res <- neat_res[[2]]
 
 }
+\references{
+For more information on the consensus clustering, see
+\href{https://link.springer.com/article/10.1023\%2FA\%3A1023949509487}{Monti et al.}.
+}
 \author{
-Philippe Boileau, \email{philippe_boileau (at) berkeley.edu}
+Philippe Boileau, \email{philippe_boileau@berkeley.edu}
 }

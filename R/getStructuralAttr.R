@@ -7,7 +7,7 @@
 #' @param net_list A list of Igraph network objects that represent the collection
 #'   of networks.
 #'   
-#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu}
 #' 
 #' @import igraph
 getStructureAttr <- function(net_list){

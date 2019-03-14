@@ -10,5 +10,5 @@
 #' @docType data
 #' @usage edge_df
 #' 
-#' @author Philippe Boileau, \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu}
 "edge_df"

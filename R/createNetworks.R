@@ -3,7 +3,7 @@
 #' @description 
 #' \code{createNetworks} creates Igraph network objects using an edge data
 #'   frame. This is important for computing structural properties of the 
-#'   networks to be explored by \link{neatmap}.
+#'   networks to be explored by \code{\link{neatmap}}.
 #' 
 #' @param edge_df A data frame where each row represents a different network and
 #'   where each column represents a potential edge between node A and node B.
@@ -13,7 +13,7 @@
 #'   and B, place a value of 0. Avoid redundant column names since all edges are
 #'   assumed to be undirected, e.g. avoid "XA_B" and "XB_A".
 #'
-#' @author Philippe Boileau , \email{philippe_boileau@berkeley.edu}
+#' @author Philippe Boileau, \email{philippe_boileau@@berkeley.edu}
 #' 
 #' @importFrom igraph graph_from_edgelist
 createNetworks <- function(edge_df) {
