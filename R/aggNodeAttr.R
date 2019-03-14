@@ -6,11 +6,11 @@
 #' @param node_df A data frame containing all the characteristics of the nodes
 #'  in the network. If there are n networks, a maximum of x nodes per network
 #'  and y variables for each node, the data frame should have n rows and x*y
-#'  columns. The column names of each variable should be writen as follows: 
+#'  columns. The column names of each variable should be written as follows: 
 #'  var1, var2, ... , varX.
 #' @param measure_of_cent A vector that contains the measures of centrality with
 #'   which to summarize the node attributes. The supported measures are "mean"
-#'   and "median". Note that missing values are exluded from the calculations.
+#'   and "median". Note that missing values are excluded from the calculations.
 #'   
 #' @author Philippe Boileau , \email{philippe_boileau@@berkeley.edu}
 #'   

@@ -3,8 +3,6 @@
 neatmaps
 ========
 
-[![](https://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](https://CRAN.R-project.org/package=neatmaps) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](https://CRAN.R-project.org/package=neatmaps)
-
 ### Overview
 
 The goal of the neatmaps package is to simplify the exploratory data analysis process for multiple network data sets with the help of heatmaps and consensus clustering. Multiple network data consists of multiple disjoint networks that share common variables. Ego network data sets are an example of such data sets. This package contains the necessary tools to prepare raw multiple network data for analysis, create a heatmap of the data, perform consensus clustering on the networks' variables and assess the stability of the variable clusters depicted in the heatmap.

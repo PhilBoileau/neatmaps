@@ -43,6 +43,6 @@ clustering. Defaults to 0.8.}
 }
 \description{
 \code{consensusClusterNoPlots} is a wrapper function for
-  \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}}that suppressess
+  \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}}that suppresses
   the creation of the plots that are created automatically.
 }

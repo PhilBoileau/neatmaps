@@ -63,7 +63,7 @@
 #' @return A list containing the heatmap of the multi-network data and a list of
 #'   length max_k-1 where each element is a list containing the consensus 
 #'   matrix, the consensus hierarchical clustering results and the consensus
-#'   class assigements. The list of results produced by the consensus clustering
+#'   class assignments. The list of results produced by the consensus clustering
 #'   can be parsed using following functions in the \code{\link{neatmaps}}
 #'   package: \code{\link{consClustResTable}}, \code{\link{consensusECDF}} and
 #'   \code{\link{consensusChangeECDF}}.

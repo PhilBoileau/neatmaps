@@ -12,7 +12,7 @@ in the list returned by \code{\link{neatmap}}.}
 }
 \description{
 \code{consensusClusterNoPlots} is a wrapper function for
-  \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}} that suppressess
+  \code{\link[ConsensusClusterPlus]{ConsensusClusterPlus}} that suppresses
   the creation of the plots that are created automatically.
 }
 \author{

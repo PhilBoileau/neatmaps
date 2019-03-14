@@ -12,7 +12,8 @@ Description: Simplify the exploratory data analysis process for multiple network
              This package contains the necessary tools for exploring such data,
              from the data pre-processing stage to the creation of dynamic
              visualizations.
-Depends: R (>= 3.4.0)
+Depends: R (>= 3.5.0)
+biocViews:
 Imports: igraph,
          heatmaply,
          ConsensusClusterPlus,
