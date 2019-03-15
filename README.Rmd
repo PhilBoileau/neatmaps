@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 
 # neatmaps
 
+[![](http://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html)
+
 ### Overview
 
 The goal of the neatmaps package is to simplify the exploratory data analysis
