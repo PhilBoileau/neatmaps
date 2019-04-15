@@ -36,7 +36,7 @@ neat_res <- neatmap(df, scale_df = "ecdf", max_k = 3, reps = 100,
 Next, plot the heatmap stored in `neat_res`.
 
 ``` r
-neat_res[[1]]
+neat_res$heatmap
 ```
 
 Finally, the results of the consensus clustering are visualized to identify the stable clusters of variables in the heatmap. The consensus matrices are presented first, followed by the ECDFs of the consensus matrices and finally the relative change in ECDF of consecutive iterations of the consensus clustering algorithm.

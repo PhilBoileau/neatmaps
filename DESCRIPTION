@@ -1,6 +1,6 @@
 Package: neatmaps
 Title: Heatmaps for Multiple Network Data
-Version: 2.0.0
+Version: 2.1.0
 Authors@R: person("Philippe", "Boileau", role = c("aut", "cre"), 
            email = "philippe_boileau@berkeley.edu")
 Author: Philippe Boileau [aut, cre]
