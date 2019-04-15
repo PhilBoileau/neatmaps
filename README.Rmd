@@ -30,7 +30,7 @@ in the heatmap.
 
 ### Installation
 
-``` {r, eval=FALSE}
+``` {r}
 # To install neatmaps, simply run the following code:
 install.packages('neatmaps')
 ```
@@ -58,6 +58,8 @@ Next, plot the heatmap stored in `neat_res`.
 neat_res$heatmap
 ```
 
+![](inst/toy_hm.png)
+
 Finally, the results of the consensus clustering are visualized to identify the
 stable clusters of variables in the heatmap. The consensus matrices are
 presented first, followed by the ECDFs of the consensus matrices and finally
@@ -68,13 +70,21 @@ clustering algorithm.
 consensusMap(neat_res)
 ```
 
+![](inst/cons_hm_2.png)
+
+![](inst/cons_hm_3.png)
+
 ```{r ECDFs}
 consensusECDF(neat_res)
 ```
 
+![](inst/ecdf.png)
+
 ```{r relative-change-ECDFs}
 consensusChangeECDF(neat_res)
 ```
+
+![](inst/rel_ecdf.png)
 
 ### Documentation
 
