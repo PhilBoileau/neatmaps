@@ -3,7 +3,7 @@
 neatmaps
 ========
 
-[![](http://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](http://cran.rstudio.com/web/packages/neatmaps/index.html)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](https://CRAN.R-project.org/package=neatmaps) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](https://CRAN.R-project.org/package=neatmaps)
 
 ### Overview
 
