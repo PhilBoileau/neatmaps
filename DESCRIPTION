@@ -1,6 +1,6 @@
 Package: neatmaps
 Title: Heatmaps for Multiple Network Data
-Version: 2.1.0
+Version: 2.1.1
 Authors@R: person("Philippe", "Boileau", role = c("aut", "cre"), 
            email = "philippe_boileau@berkeley.edu")
 Author: Philippe Boileau [aut, cre]
@@ -12,7 +12,7 @@ Description: Simplify the exploratory data analysis process for multiple network
              This package contains the necessary tools for exploring such data,
              from the data pre-processing stage to the creation of dynamic
              visualizations.
-Depends: R (>= 3.5.0)
+Depends: R (>= 3.6.1)
 biocViews:
 Imports: igraph,
          heatmaply,
