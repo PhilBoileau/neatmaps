@@ -93,7 +93,7 @@ consensusChangeECDF(neat_res)
 These results indicate that there are likely four distinct clusters
 among the aggregated network variables, since the consensus matrix with
 four clusters offers the shapest contrasts between clusters, it’s ECDF
-most closely resembles that of an indicator function and because of the
+most closely resembles that of an indicator function, and because of the
 elbow in the relative change of the ECDF occurs when there are four
 clusters.
 
