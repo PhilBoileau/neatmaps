@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 # neatmaps
 
 [![](http://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](https://CRAN.R-project.org/package=neatmaps) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](https://CRAN.R-project.org/package=neatmaps)
+[![DOI](https://zenodo.org/badge/94129920.svg)](https://zenodo.org/badge/latestdoi/94129920)
+
 
 ### Overview
 

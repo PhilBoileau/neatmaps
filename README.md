@@ -4,7 +4,8 @@
 # neatmaps
 
 [![](http://cranlogs.r-pkg.org/badges/grand-total/neatmaps)](https://CRAN.R-project.org/package=neatmaps)
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/neatmaps)](https://CRAN.R-project.org/package=neatmaps)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/neatmaps)](https://CRAN.R-project.org/package=neatmaps)
+[![DOI](https://zenodo.org/badge/94129920.svg)](https://zenodo.org/badge/latestdoi/94129920)
 
 ### Overview
 
@@ -31,10 +32,10 @@ package on a simulated network dataset. Run this code locally to produce
 the plots.
 
 First, load the package and format the network data using the
-`netsDataFrame` function. This function has four inputs: an \(n x p\)
-data frame of \(n\) networks described by \(p\) graph attributes
-(e.g. density), an \(n x mk\) data frame of \(n\) networks, their \(m\)
-nodes and \(k\) variables describing these nodes (e.g. age of node, in a
+`netsDataFrame` function. This function has four inputs: an *n**x**p*
+data frame of *n* networks described by *p* graph attributes
+(e.g. density), an *n**x**m**k* data frame of *n* networks, their *m*
+nodes and *k* variables describing these nodes (e.g. age of node, in a
 social network context), a data frame containing the undirected
 adjacensy matrix and a string defining the aggregation function used to
 summarize the node variable data.
@@ -70,8 +71,7 @@ Finally, the results of the consensus clustering are visualized to
 identify the stable clusters of variables in the heatmap. The consensus
 matrices are presented first, followed by the ECDFs of the consensus
 matrices and finally the relative change in ECDF of consecutive
-iterations of the consensus clustering
-algorithm.
+iterations of the consensus clustering algorithm.
 
 ``` r
 consensusMap(neat_res)
